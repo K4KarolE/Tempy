@@ -1,2 +1,2 @@
-# Tempy
-Weather forecast app using weather API - WORK IN PROGRESS
+# Tempy 
+## Weather forecast app using OpenWeather API - WORK IN PROGRESS
