@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Chelsea",
+    "local_names": {
+      "pl": "Chelsea",
+      "no": "Chelsea",
+      "ur": "\u0686\u06cc\u0644\u0633\u06cc\u060c \u0644\u0646\u062f\u0646",
+      "eu": "Chelsea",
+      "ar": "\u062a\u0634\u064a\u0644\u0633\u064a",
+      "fr": "Chelsea",
+      "zh": "\u8eca\u8def\u58eb",
+      "ga": "Chelsea",
+      "es": "Chelsea",
+      "az": "\u00c7elsi",
+      "he": "\u05e6'\u05dc\u05e1\u05d9",
+      "hu": "Chelsea",
+      "vi": "Chelsea, Lu\u00e2n \u0110\u00f4n",
+      "tr": "Chelsea, Londra",
+      "hi": "\u091a\u0947\u0932\u094d\u0938\u0940, \u0932\u0902\u0926\u0928",
+      "sh": "Chelsea, London",
+      "de": "Chelsea",
+      "id": "Chelsea, London",
+      "pt": "Chelsea",
+      "en": "Chelsea",
+      "it": "Chelsea",
+      "el": "\u03a4\u03c3\u03ad\u03bb\u03c3\u03b9",
+      "et": "Chelsea",
+      "ja": "\u30c1\u30a7\u30eb\u30b7\u30fc",
+      "nl": "Chelsea",
+      "da": "Chelsea",
+      "uk": "\u0427\u0435\u043b\u0441\u0456",
+      "ko": "\uccbc\uc2dc",
+      "sv": "Chelsea, London",
+      "sk": "Chelsea",
+      "fa": "\u0686\u0644\u0633\u06cc",
+      "af": "Chelsea, Londen",
+      "ru": "\u0427\u0435\u043b\u0441\u0438"
+    },
+    "lat": 51.4875167,
+    "lon": -0.1687007,
+    "country": "GB",
+    "state": "England"
+  },
+  {
+    "name": "Chelsea",
+    "local_names": {
+      "en": "Chelsea",
+      "ru": "\u0427\u0435\u043b\u0441\u0438"
+    },
+    "lat": 42.3917638,
+    "lon": -71.0328284,
+    "country": "US",
+    "state": "Massachusetts"
+  },
+  {
+    "name": "Chelsea",
+    "local_names": {
+      "en": "Chelsea",
+      "ru": "\u0427\u0435\u043b\u0441\u0438"
+    },
+    "lat": 40.7464906,
+    "lon": -74.0015283,
+    "country": "US",
+    "state": "New York"
+  },
+  {
+    "name": "Chelsea",
+    "lat": 45.5031737,
+    "lon": -75.808023,
+    "country": "CA",
+    "state": "Quebec"
+  },
+  {
+    "name": "Chelsea",
+    "lat": 33.3401108,
+    "lon": -86.6302625,
+    "country": "US",
+    "state": "Alabama"
+  }
+]
