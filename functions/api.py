@@ -25,8 +25,6 @@ def path_json(name_json):
     return path_json   
 
 
-settings_data = settings.open_settings()
-
 # API KEY
 path_api_key = Path(main_directory, 'api_key.txt')
 file = open(path_api_key)
@@ -34,39 +32,51 @@ api_key = file.read()
 file.close()
 
 
-## FIND CITY
-city = "Chelsea"
-limit = 5
-link_find_city = f'http://api.openweathermap.org/geo/1.0/direct?q={city}&limit={limit}&appid={api_key}'
-response = requests.get(link_find_city)
+def find_city():
+    settings_data = settings.open_settings()
+    city = settings_data['city_added']
+    limit = 5
+    link_find_city = f'http://api.openweathermap.org/geo/1.0/direct?q={city}&limit={limit}&appid={api_key}'
+    response = requests.get(link_find_city)
 
-# SAVE, LOAD 'FIND CITY' RESPONSE
-with open(path_json('find_city.json'), 'w') as f:
-    json.dump(response.json(), f, indent=2)
+    find_city_dic = response.json()
 
-f = open(path_json('find_city.json'))
-find_city_dic = json.load(f)
+    city_list = {}
+    for i in find_city_dic:
+        if i['country'] != 'US':
+            location_name = f"{i['name']}, {i['country']}"
+            city_list[location_name] = {'lat':i["lat"], 'lon':i["lon"]}
+        else:
+            location_name = f"{i['name']}, {i['country']}, {i['state']}"
+            city_list[location_name] = {'lat':i["lat"], 'lon':i["lon"]}
 
-# CITY LIST
-list_city_dic = {}
-for i in find_city_dic:
-    location_name = f"{i['name']}, {i['country']}, {i['state']}"
-    list_city_dic[location_name] = {'lat':i["lat"], 'lon':i["lon"]}
+    settings_data['city_list'] = city_list
+    settings.save_settings(settings_data)
 
-# for i in list_city_dic:
-#     print(f'{i}: {list_city_dic[i]["lat"]}, {list_city_dic[i]["lon"]}')
-    # Chelsea, GB, England: 51.4875167, -0.1687007
+    # for i in city_list:
+    #     print(f'{i}: {city_list[i]["lat"]}, {city_list[i]["lon"]}')
+        # Chelsea, GB, England: 51.4875167, -0.1687007
 
 
 
 ## FIVE DAY / 3 HOUR FORECAST
-lat = list_city_dic["Chelsea, GB, England"]["lat"]  # will come as chosen one from the city list / UI
-lon = list_city_dic["Chelsea, GB, England"]["lon"]
+def get_five_day():
+    settings_data = settings.open_settings()
+    city_selected= settings_data['city_selected']
+    lat = settings_data['city_list'][city_selected]['lat']
+    lon = settings_data['city_list'][city_selected]['lon']
+    temp_type_selected = settings_data['temp_type_selected']    # example: Celsius
+    temp_type = settings_data['temp_type'][temp_type_selected]  # example: metric
 
-link_five_day = f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={api_key}'
-response = requests.get(link_five_day)
+    link_five_day = f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units={temp_type}&appid={api_key}'
+    response = requests.get(link_five_day)
 
-# SAVE, LOAD 'FIVE DAY FORECAST' RESPONSE
-with open(path_json('5_day_forecast.json'), 'w') as f:
-    json.dump(response.json(), f, indent=2)
+    # SAVE, LOAD 'FIVE DAY FORECAST' RESPONSE
+    with open(path_json('5_day_forecast.json'), 'w') as f:
+        json.dump(response.json(), f, indent=2)
+
+
+# find_city()
+# get_five_day()
+
 

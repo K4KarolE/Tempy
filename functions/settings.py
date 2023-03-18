@@ -4,7 +4,7 @@ from pathlib import Path
 
 functions_directory = os.path.dirname(__file__)
 main_directory = functions_directory.replace("functions",'')
-path_json = Path(main_directory, "json", "5_day_forecast_example.json")    
+path_json = Path(main_directory, "json", "settings_db.json")    
 
 def open_settings():
     f = open(path_json)

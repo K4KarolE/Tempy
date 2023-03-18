@@ -1,0 +1,23 @@
+{
+  "city_added": "Budapest",
+  "city_list": {
+    "Budapest, HU": {
+      "lat": 47.48138955,
+      "lon": 19.14609412691246
+    },
+    "Budapest, US, Missouri": {
+      "lat": 36.7689441,
+      "lon": -90.710953
+    },
+    "Budapest, US, Georgia": {
+      "lat": 33.7151066,
+      "lon": -85.2180055
+    }
+  },
+  "city_selected": "Budapest, HU",
+  "temp_type_selected": "Celsius",
+  "temp_type": {
+    "Fahrenheit": "imperial",
+    "Celsius": "metric"
+  }
+}
