@@ -59,8 +59,8 @@ def find_city():
 
 
 
-## FIVE DAY / 3 HOUR FORECAST
-def get_five_day():
+## GET WEATHER DATA
+def get_weather_data():
     settings_data = settings.open_settings()
     city_selected= settings_data['city_selected']
     lat = settings_data['city_list'][city_selected]['lat']
@@ -68,15 +68,23 @@ def get_five_day():
     temp_type_selected = settings_data['temp_type_selected']    # example: Celsius
     temp_type = settings_data['temp_type'][temp_type_selected]  # example: metric
 
-    link_five_day = f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units={temp_type}&appid={api_key}'
-    response = requests.get(link_five_day)
+    def weather_current():
+        link_current = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units={temp_type}&appid={api_key}'
+        response_link_current = requests.get(link_current)
 
-    # SAVE, LOAD 'FIVE DAY FORECAST' RESPONSE
-    with open(path_json('5_day_forecast.json'), 'w') as f:
-        json.dump(response.json(), f, indent=2)
+        with open(path_json('weather_current.json'), 'w') as f:
+            json.dump(response_link_current.json(), f, indent=2)
+    
+    def weather_5_day():
+        link_five_day = f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units={temp_type}&appid={api_key}'
+        response_link_five_day = requests.get(link_five_day)
+        
+        with open(path_json('weather_5_day.json'), 'w') as f:
+            json.dump(response_link_five_day.json(), f, indent=2)
+        
+    weather_current()
+    weather_5_day()
 
 
-# find_city()
-# get_five_day()
 
 

@@ -1,20 +1,28 @@
 {
-  "city_added": "Budapest",
+  "city_added": "LOndon",
   "city_list": {
-    "Budapest, HU": {
-      "lat": 47.48138955,
-      "lon": 19.14609412691246
+    "London, GB": {
+      "lat": 51.5073219,
+      "lon": -0.1276474
     },
-    "Budapest, US, Missouri": {
-      "lat": 36.7689441,
-      "lon": -90.710953
+    "City of London, GB": {
+      "lat": 51.5156177,
+      "lon": -0.0919983
     },
-    "Budapest, US, Georgia": {
-      "lat": 33.7151066,
-      "lon": -85.2180055
+    "London, CA": {
+      "lat": 42.9832406,
+      "lon": -81.243372
+    },
+    "Chelsea, GB": {
+      "lat": 51.4875167,
+      "lon": -0.1687007
+    },
+    "London, US, Kentucky": {
+      "lat": 37.1289771,
+      "lon": -84.0832646
     }
   },
-  "city_selected": "Budapest, HU",
+  "city_selected": "London, US, Kentucky",
   "temp_type_selected": "Celsius",
   "temp_type": {
     "Fahrenheit": "imperial",
