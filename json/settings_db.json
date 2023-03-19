@@ -23,9 +23,16 @@
     }
   },
   "city_selected": "London, US, Kentucky",
-  "temp_type_selected": "Celsius",
+  "temp_type_selected": "Fahrenheit",
   "temp_type": {
     "Fahrenheit": "imperial",
     "Celsius": "metric"
-  }
+  },
+  "background_color": "#DEDEDE",
+  "field_background_color": "#DEDEDE",
+  "canvas_frame_color": "#989898",
+  "font_style": "Arial",
+  "font_size": "12",
+  "font_color": "black",
+  "window_title": "Video Downloader"
 }
