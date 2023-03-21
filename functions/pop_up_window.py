@@ -12,6 +12,8 @@ from pathlib import Path
 import settings
 settings_data = settings.open_settings()
 
+# from functions import api
+import api
 
 
 # SEARCH FIELD LENGTH
@@ -32,8 +34,8 @@ button_width = 10
 # WINDOW     
 top_window = Tk() #Toplevel()
 top_window.title("Settings")
-window_width = 447
-window_length = 138
+window_width =  447    #447
+window_length = 200    #138
 # screen_width = window.winfo_screenwidth()
 # screen_height = window.winfo_screenheight()
 # top_window.geometry(f'{window_width}x{window_length}+%d+%d' % (screen_width/2+180, screen_height/2+27))    
@@ -96,37 +98,53 @@ class Fields:
 
 ## WIDGETS
 ## CITY SEARCH - FIELD + BUTTON
-yt_dlp_location_field_instance = Fields(search_field_length, "white")
-yt_dlp_location_field = yt_dlp_location_field_instance.create()
+city_search_field_instance = Fields(search_field_length, "white")
+city_search_field = city_search_field_instance.create()
 
 
-def browse_location_yt_dlp():
-    file_name = filedialog.askopenfilename(initialdir = "/",
-                title = "Select a File",
-                filetypes = (("Executable", "*.exe"),
-                            ("all files", "*.*")))
-    yt_dlp_location_field.delete('1.0', END)       # once a button is clicked, removes the previous value
-    yt_dlp_location_field.insert(END,file_name)     # adding the path and the name of the selected file
+def city_search():
+    ## CITY SEARCH
+    city = city_search_field.get("1.0", "end-1c")
+    api.find_city(city)
 
-yt_dlp_location_button_instance = Buttons("Search", lambda:[browse_location_yt_dlp()])
-yt_dlp_location_button = yt_dlp_location_button_instance.create()
+    ## CITY SELECT
+    # CREATE LIST
+    settings_data = settings.open_settings()
+    city_select_list = []
+    for item in settings_data['city_list']:
+        city_select_list.append(item)
+    city_select_list.sort()
+    # DISPLAY THE NEW ROLL DOWN MENU  
+    city_select_roll_down_clicked.set(city_select_list[0]) 
+    city_select_roll_down = OptionMenu( top_window, city_select_roll_down_clicked, *city_select_list, command=None)
+    city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
+    city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')
+    city_select_roll_down.place(x=25, y=100)   
+
+city_search_button_instance = Buttons("Search", lambda:[city_search()])
+city_search_button = city_search_button_instance.create()
 
 
-## SELECT CITY - FIELD + BUTTON
-ffmpeg_location_field_instance = Fields(search_field_length,"white")
-ffmpeg_location_field = ffmpeg_location_field_instance.create()
+## CITY SELECT - ROLL DOWN MENU + BUTTON
+# ROLL DOWN MENU
+city_select_list=["None"]
+city_select_roll_down_clicked = StringVar()
+city_select_roll_down_clicked.set("  Search for the city first ")
+city_select_roll_down = OptionMenu( top_window, city_select_roll_down_clicked, *city_select_list, command=None)     
+city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
+city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')
 
+# BUTTON
+# CITY SELECTED - ACTIONS
+def city_selected():
+    city_selected = city_select_roll_down_clicked.get()
+    settings_data = settings.open_settings()
+    settings_data['city_selected'] = city_selected
+    settings_data['city_selected_name'] = city_selected.split(',')[0]
+    settings.save_settings(settings_data)
 
-def browse_location_ffmpeg():
-    file_name = filedialog.askopenfilename(initialdir = "/",
-                title = "Select a File",
-                filetypes = (("Executable", "*.exe"),
-                            ("all files", "*.*")))
-    ffmpeg_location_field.delete('1.0', END)       # once a button is clicked, removes the previous value
-    ffmpeg_location_field.insert(END,file_name)     # adding the path and the name of the selected file
-
-ffmpeg_location_button_instance = Buttons("Select", lambda: [browse_location_ffmpeg()])
-ffmpeg_location_button = ffmpeg_location_button_instance.create()
+city_select_button_instance = Buttons("Select", lambda: [city_selected()])
+city_select_button = city_select_button_instance.create()
 
 
 ## CELSIUS - BUTTON
@@ -181,12 +199,12 @@ fahrenheit_button.place(x=125, y=y_location(0))
 
 
 # SEARCH CITY - FIELD + BUTTON
-yt_dlp_location_field.place(x=25, y=70)
-yt_dlp_location_button.place(x=x_button, y=y_location(0)+2)
+city_search_field.place(x=25, y=70)
+city_search_button.place(x=x_button, y=y_location(1)+20)
 
 # SELECT CITY - FIELD + BUTTON
-ffmpeg_location_field.place(x=25, y=100)
-ffmpeg_location_button.place(x=x_button, y=y_location(2)-2)
+city_select_roll_down.place(x=25, y=100)
+city_select_button.place(x=x_button, y=y_location(3)+18)
 
 top_window.mainloop()
 

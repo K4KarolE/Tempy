@@ -32,9 +32,8 @@ api_key = file.read()
 file.close()
 
 
-def find_city():
+def find_city(city):
     settings_data = settings.open_settings()
-    city = settings_data['city_added']
     limit = 5
     link_find_city = f'http://api.openweathermap.org/geo/1.0/direct?q={city}&limit={limit}&appid={api_key}'
     response = requests.get(link_find_city)

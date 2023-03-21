@@ -1,29 +1,29 @@
 {
-  "city_added": "LOndon",
   "city_list": {
-    "London, GB": {
-      "lat": 51.5073219,
-      "lon": -0.1276474
+    "Washington, US, District of Columbia": {
+      "lat": 38.8950368,
+      "lon": -77.0365427
     },
-    "City of London, GB": {
-      "lat": 51.5156177,
-      "lon": -0.0919983
+    "Washington, US, Pennsylvania": {
+      "lat": 40.17396,
+      "lon": -80.2461714
     },
-    "London, CA": {
-      "lat": 42.9832406,
-      "lon": -81.243372
+    "Washington, US, Illinois": {
+      "lat": 40.7033988,
+      "lon": -89.4065113
     },
-    "Chelsea, GB": {
-      "lat": 51.4875167,
-      "lon": -0.1687007
+    "Washington, US, Iowa": {
+      "lat": 41.2990848,
+      "lon": -91.6923661
     },
-    "London, US, Kentucky": {
-      "lat": 37.1289771,
-      "lon": -84.0832646
+    "Washington, US, Georgia": {
+      "lat": 33.7367948,
+      "lon": -82.7393089
     }
   },
-  "city_selected": "London, US, Kentucky",
-  "temp_type_selected": "Fahrenheit",
+  "city_selected": "Washington, US, Illinois",
+  "city_selected_name": "Washington",
+  "temp_type_selected": "Celsius",
   "temp_type": {
     "Fahrenheit": "imperial",
     "Celsius": "metric"
