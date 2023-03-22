@@ -13,8 +13,8 @@ import os
 from pathlib import Path
 
 # from functions import messages
-# from functions import settings
-import settings
+from functions import settings
+# import settings
 
 
 functions_directory = os.path.dirname(__file__)     # = D:\_DEV\Python\MODDEC\functions   //in my case
