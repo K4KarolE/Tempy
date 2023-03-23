@@ -14,6 +14,8 @@ settings_data = settings.open_settings()        # access to the saved/default se
 
 from functions import settings_window
 
+from functions import button_image
+
 
 # COLORS - FONT STYLE
 # original tkinter grey: #F0F0F0 - FYI
@@ -81,15 +83,8 @@ search_field_length = 40
 
 
 ## WIDGETS
-## SETTINGS BUTTON - POP UP WINDOW
-my_img_path = Path(working_directory, "skin", "icon_cog_popup.ico")
-my_img = Image.open(my_img_path)
-width = int(24)
-height = int(24)
-resized_image = my_img.resize((width, height))
-# global img  # otherwise it will not be displayed - Garbage Collection - https://stackoverflow.com/questions/16424091/why-does-tkinter-image-not-show-up-if-created-in-a-function
-photo_cog = ImageTk.PhotoImage(resized_image)
-
+# SETTINGS BUTTON
+photo_cog = button_image.create(24,"icon_cog_popup.ico")
 settings_button = Button(window,
                       command = lambda: [settings_window.launch(window, canvas)],
                       image = photo_cog, 
@@ -100,17 +95,7 @@ settings_button = Button(window,
                       activeforeground=background_color, 
                       activebackground='#505050')
 
-## GET URL - BUTTON
-# REMOVE PREVIOUS VALUES - THUMBNAIL
-# DISPLAY THUMBNAIL
-# path_thumbnail_default = Path(working_directory, "thumbnail", "thumbnail_default.png") 
-# my_img = Image.open(path_thumbnail_default)
-# img = ImageTk.PhotoImage(my_img)
-# thumbnail = Label(window, image=img, background=canvas_color)
-# thumbnail_x = settings_data['thumbnail_location_x']
-# thumbnail_y = settings_data['thumbnail_location_y']
-
-    
+  
 
 ### DISPLAY WIDGETS
 def display_widgets():

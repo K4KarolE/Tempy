@@ -13,6 +13,8 @@ settings_data = settings.open_settings()
 from functions import api
 # import api
 
+from functions import button_image
+
 
 def launch(window, canvas):
 
@@ -91,7 +93,7 @@ def launch(window, canvas):
     city_search_field = city_search_field_instance.create()
 
 
-    def city_search():
+    def city_search(city_select_roll_down):     # city_select_roll_down: to able to remove the previous widget
         ## CITY SEARCH
         city = city_search_field.get("1.0", "end-1c")
         api.find_city(city)
@@ -103,14 +105,16 @@ def launch(window, canvas):
         for item in settings_data['city_list']:
             city_select_list.append(item)
         city_select_list.sort()
+        # REMOVE PREVIOUS WIDGET
+        city_select_roll_down.destroy()
         # DISPLAY THE NEW ROLL DOWN MENU  
         city_select_roll_down_clicked.set(city_select_list[0]) 
         city_select_roll_down = OptionMenu( window, city_select_roll_down_clicked, *city_select_list, command=None)
         city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
         city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')
-        city_select_roll_down.place(x=25, y=y_location(4))   
+        city_select_roll_down.place(x=25, y=y_location(4))
 
-    city_search_button_instance = Buttons("Search", lambda:[city_search()])
+    city_search_button_instance = Buttons("Search", lambda:[city_search(city_select_roll_down)])
     city_search_button = city_search_button_instance.create()
 
 
@@ -169,6 +173,19 @@ def launch(window, canvas):
     fahrenheit_button = fahrenheit_button_instance.create()
     if settings_data['temp_type_selected'] == "Fahrenheit":
         Buttons.selected(fahrenheit_button)
+    
+    ## 'X' - CLOSE BUTTON
+    def close(window):
+        # WINDOW     
+        window_width =  550    
+        window_length = 445    
+        window.geometry(f'{window_width}x{window_length}')
+
+    close_button_instance = Buttons("x", lambda:[close(window)])
+    close_button = close_button_instance.create()
+    photo_size = 20
+    photo_close = button_image.create(photo_size,"icon_close.png")
+    close_button.configure(height=photo_size+2, width=photo_size+2, image = photo_close, activebackground='#505050')
 
 
     ## DISPLAY WIDGETS
@@ -183,12 +200,11 @@ def launch(window, canvas):
         location = y_button_base + 20 * gap
         return location
 
-    # SAVE BUTTON
+    # CELSIUS BUTTON
     celsius_button.place(x=25, y=y_location(0))
 
-    # SAVE BUTTON
+    # FAHRENHEAIT BUTTON
     fahrenheit_button.place(x=125, y=y_location(0))
-
 
     # SEARCH CITY - FIELD + BUTTON
     city_search_field.place(x=25, y=y_location(1)+20)
@@ -197,6 +213,9 @@ def launch(window, canvas):
     # SELECT CITY - FIELD + BUTTON
     city_select_roll_down.place(x=25, y=y_location(4))
     city_select_button.place(x=x_button, y=y_location(4))
+
+    # CLOSE BUTTON
+    close_button.place(x=window_width-45, y=y_location(-2))
 
     window.mainloop()
 
