@@ -78,7 +78,7 @@ def get_weather_data():
         link_five_day = f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units={temp_type}&appid={api_key}'
         response_link_five_day = requests.get(link_five_day)
         
-        with open(path_json('weather_5_day.json'), 'w') as f:
+        with open(path_json('weather_5_days.json'), 'w') as f:
             json.dump(response_link_five_day.json(), f, indent=2)
         
     weather_current()
