@@ -2,7 +2,6 @@
 import os
 
 from tkinter import *
-from tkinter import filedialog      # for browse window (adding path)
 
 from PIL import Image               # PILLOW import has to be after the tkinter impoert (Image.open will not work: 'Image has no attributesm open')
 from PIL import ImageTk
@@ -12,7 +11,8 @@ from pathlib import Path
 # from functions import messages
 from functions import settings
 settings_data = settings.open_settings()        # access to the saved/default settings (settings_db.json)
-from functions import pop_up_window
+
+from functions import settings_window
 
 
 # COLORS - FONT STYLE
@@ -28,7 +28,7 @@ font_color = settings_data['font_color']
 window = Tk()
 window.title(settings_data['window_title'])
 window_width = 550
-window_length = 650
+window_length = 445
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
 window.geometry(f'{window_width}x{window_length}+%d+%d' % (screen_width/2-275, screen_height/2-125))    #   position to the middle of the screen
@@ -44,6 +44,7 @@ canvas_frame_color = settings_data['canvas_frame_color']
 canvas = Canvas(window, width=window_width, height=window_length, background = background_color)
 canvas.create_rectangle(5-1, 5+2, window_width-5, window_length-5, outline=canvas_frame_color, fill=canvas_color)
 canvas.pack()
+
 # SEARCH FIELD LENGTH
 search_field_length = 40
 
@@ -90,7 +91,7 @@ resized_image = my_img.resize((width, height))
 photo_cog = ImageTk.PhotoImage(resized_image)
 
 settings_button = Button(window,
-                      command = lambda: [pop_up_window.launch(window)],
+                      command = lambda: [settings_window.launch(window, canvas)],
                       image = photo_cog, 
                       height = 30,
                       width = 30,
@@ -122,9 +123,9 @@ def display_widgets():
     # y_button_base = 15
     # y_diff_from_start = 15
 
-    def y_button(gap):
-        location = y_button_base + 23 * gap
-        return location
+    # def y_button(gap):
+    #     location = y_button_base + 23 * gap
+    #     return location
         
     # SETTINGS BUTTON
     settings_button.place(x=window_width - 50, y=20)
@@ -135,5 +136,6 @@ def display_widgets():
 
 
 display_widgets()
+
 
 window.mainloop()

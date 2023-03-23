@@ -2,12 +2,12 @@
 A,
 Creating a dictionary where the keys named with integer values of
 date of the day @ 00:00:00 -> 1679529600
-date of the day @ 00:03:00
+date of the day @ 00:03:00 -> 1679540400
 ..
-*48 -> covers the today - +5 days range
+*48 -> covers the (today - +5) days range
 
 B,
-allocating the current available weather data to the matching int date
+allocating the current available weather data to the dictionary with matching int datetime key
 '''
 
 from datetime import datetime
@@ -25,7 +25,7 @@ datetime_int  = int(today_datetime_zero.timestamp())    # 1679529600
 
 five_day_fcast_matrix = {}
 counter = 0
-while counter < 48: # day/3hrs * 6 (5 day forcast from the current time -> overlaping, the first and last day: no full forecast)
+while counter < 48: # day/3hrs * 6 (5 day forcast from the current time -> overlaping, on the first and last day: no full forecast)
     five_day_fcast_matrix[datetime_int + 10800 * counter] = {}   # 10800 = 3hrs jump / 2023-03-23 00:00:00 -> 2023-03-23 00:03:00
     counter += 1
 
