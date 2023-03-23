@@ -1,21 +1,16 @@
 
 import os
-
 from tkinter import *
-
-from PIL import Image               # PILLOW import has to be after the tkinter impoert (Image.open will not work: 'Image has no attributesm open')
-from PIL import ImageTk
-
 from pathlib import Path
 
 # from functions import messages
 from functions import settings
-settings_data = settings.open_settings()        # access to the saved/default settings (settings_db.json)
-
 from functions import settings_window
-
 from functions import button_image
 
+
+# ACCESS TO SETTINGS_DB.JSON
+settings_data = settings.open_settings()   
 
 # COLORS - FONT STYLE
 # original tkinter grey: #F0F0F0 - FYI
