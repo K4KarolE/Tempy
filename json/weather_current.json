@@ -1,46 +1,43 @@
 {
   "coord": {
-    "lon": -0.092,
-    "lat": 51.5156
+    "lon": 19.1461,
+    "lat": 47.4814
   },
   "weather": [
     {
-      "id": 501,
-      "main": "Rain",
-      "description": "moderate rain",
-      "icon": "10d"
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 53.28,
-    "feels_like": 52.11,
-    "temp_min": 49.95,
-    "temp_max": 57.54,
-    "pressure": 997,
-    "humidity": 81
+    "temp": 67.24,
+    "feels_like": 65.59,
+    "temp_min": 65.35,
+    "temp_max": 68.52,
+    "pressure": 1007,
+    "humidity": 41
   },
   "visibility": 10000,
   "wind": {
-    "speed": 10.36,
-    "deg": 230
-  },
-  "rain": {
-    "1h": 1.79
+    "speed": 4.61,
+    "deg": 220
   },
   "clouds": {
-    "all": 40
+    "all": 0
   },
-  "dt": 1679662060,
+  "dt": 1679677967,
   "sys": {
     "type": 2,
-    "id": 2075535,
-    "country": "GB",
-    "sunrise": 1679637290,
-    "sunset": 1679681915
+    "id": 2009313,
+    "country": "HU",
+    "sunrise": 1679632757,
+    "sunset": 1679677216
   },
-  "timezone": 0,
-  "id": 6690593,
-  "name": "Barbican",
+  "timezone": 3600,
+  "id": 7284834,
+  "name": "Budapest X. keruelet",
   "cod": 200
 }

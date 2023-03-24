@@ -81,26 +81,66 @@ city_name.place(x=200, y=30)
 # TEMP / HUM / WIND - FONT SIZE / STYLE
 details_font_size = 15
 details_font_style = 'Arial'
+details_y_base = 60
+details_y_gap = 30
 # TEMPERATURE
 temp_text = f"{current_w_dic['main']['temp']} \xb0"     # \xb0 = degree sign
 temp_instance = Text(temp_text, details_font_style, details_font_size)
 temp = temp_instance.create()
-temp.place(x=280, y=80)
+temp.place(x=280, y=details_y_base + details_y_gap * 0)
 # HUMIDITY
 hum_text = f"{current_w_dic['main']['humidity'] }%"     # \xb0 = degree sign
 hum_instance = Text(hum_text, details_font_style, details_font_size)
 hum = hum_instance.create()
-hum.place(x=310, y=120)
+hum.place(x=310, y=details_y_base + details_y_gap * 1)
 # WIND
 wind_text = f"{current_w_dic['wind']['speed']} W"     # \xb0 = degree sign
 wind_instance = Text(wind_text, details_font_style , details_font_size)
 wind = wind_instance.create()
-wind.place(x=310, y=160)
+wind.place(x=310, y=details_y_base + details_y_gap * 2)
 # ICON
 icon_name = current_w_dic['weather'][0]['icon']
-icon_image = image_display.weather_icon(100, icon_name)
+icon_image = image_display.weather_icon(80, icon_name)
 icon_image_widget = Label(window, image=icon_image, background=canvas_color)
-icon_image_widget.place(x=150, y=90)
+icon_image_widget.place(x=170, y=65)
+
+# 5 DAY WEATHER DATA
+time_list = [ '00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
+n = 0
+for item in time_list:
+    time_instance = Text(item, details_font_style , 12)
+    time = time_instance.create()
+    time.place(x=20 + n, y=160)
+    n += 65
+
+five_days_matrix = management.load_weather_data('weather_5_days_matrix.json')
+x_counter = 1
+x_gap = 65
+
+y_counter = 0
+y_gap = 40
+five_day_icon_image = []            # avoid garbage collection
+five_day_icon_image_widget = []     # avoid garbage collection
+n=0
+for item in five_days_matrix.values():
+    if len(item) != 0:
+        five_day_icon_name = item['weather'][0]['icon']
+        five_day_icon_image.append(image_display.weather_icon(50, five_day_icon_name))
+        five_day_icon_image_widget.append(Label(window, image=five_day_icon_image[n], background=canvas_color))
+        five_day_icon_image_widget[n].place(x=-45 + x_counter * x_gap, y=180 + y_counter * y_gap)
+        n += 1
+    if x_counter % 8 == 0:
+        x_counter = 0
+        y_counter += 1
+    x_counter += 1
+
+    
+
+       
+
+
+
+
 # class Icon:  
 #     def __init__(self, size):
 #         self.size = size
