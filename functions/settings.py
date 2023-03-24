@@ -1,18 +1,16 @@
 import json
-import os
-from pathlib import Path
+from functions import management
 
-functions_directory = os.path.dirname(__file__)
-main_directory = functions_directory.replace("functions",'')
-path_json = Path(main_directory, "json", "settings_db.json")    
+
+path_settings_json = management.path_json("settings_db.json")   
 
 def open_settings():
-    f = open(path_json)
+    f = open(path_settings_json)
     settings_data = json.load(f)
     return settings_data
 
 def save_settings(settings_data):
-    with open(path_json, 'w') as f:
+    with open(path_settings_json, 'w') as f:
         json.dump(settings_data, f, indent=2)
     return
 

@@ -6,7 +6,7 @@ from pathlib import Path
 # from functions import messages
 from functions import settings
 from functions import settings_window
-from functions import button_image
+from functions import image_display
 
 
 # ACCESS TO SETTINGS_DB.JSON
@@ -79,7 +79,7 @@ search_field_length = 40
 
 ## WIDGETS
 # SETTINGS BUTTON
-photo_cog = button_image.create(24,"icon_cog_popup.ico")
+photo_cog = image_display.button(24,"icon_cog_popup.ico")
 settings_button = Button(window,
                       command = lambda: [settings_window.launch(window, canvas)],
                       image = photo_cog, 
@@ -89,6 +89,9 @@ settings_button = Button(window,
                       background=background_color, 
                       activeforeground=background_color, 
                       activebackground='#505050')
+
+## CURRENT WEATHER DATA
+
 
   
 

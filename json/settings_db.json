@@ -1,29 +1,25 @@
 {
   "city_list": {
-    "Washington, US, District of Columbia": {
-      "lat": 38.8950368,
-      "lon": -77.0365427
+    "Bristol, GB": {
+      "lat": 51.4538022,
+      "lon": -2.5972985
     },
-    "Washington, US, Pennsylvania": {
-      "lat": 40.17396,
-      "lon": -80.2461714
+    "Bristol, US, Virginia": {
+      "lat": 36.5959685,
+      "lon": -82.1885009
     },
-    "Washington, US, Illinois": {
-      "lat": 40.7033988,
-      "lon": -89.4065113
+    "Bristol, US, Connecticut": {
+      "lat": 41.6735209,
+      "lon": -72.9464859
     },
-    "Washington, US, Iowa": {
-      "lat": 41.2990848,
-      "lon": -91.6923661
-    },
-    "Washington, US, Georgia": {
-      "lat": 33.7367948,
-      "lon": -82.7393089
+    "Bristol, US, Tennessee": {
+      "lat": 36.5945034,
+      "lon": -82.1885212
     }
   },
-  "city_selected": "Washington, US, Iowa",
+  "city_selected": "Bristol, US, Virginia",
   "city_selected_name": "London",
-  "temp_type_selected": "Celsius",
+  "temp_type_selected": "Fahrenheit",
   "temp_type": {
     "Fahrenheit": "imperial",
     "Celsius": "metric"

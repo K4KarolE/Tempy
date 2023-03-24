@@ -6,19 +6,11 @@ from pathlib import Path
 
 # from functions import messages
 from functions import settings
-# import settings
-
-
-functions_directory = os.path.dirname(__file__)     # = D:\_DEV\Python\MODDEC\functions   //in my case
-main_directory = functions_directory.replace("functions",'')
-
-def path_json(name_json):
-    path_json = Path(main_directory,  "json", name_json)
-    return path_json   
+from functions import management
 
 
 # API KEY
-path_api_key = Path(main_directory, 'api_key.txt')
+path_api_key = Path(management.main_directory(), 'api_key.txt')
 file = open(path_api_key)
 api_key = file.read()
 file.close()
@@ -63,14 +55,14 @@ def get_weather_data():
         link_current = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units={temp_type}&appid={api_key}'
         response_link_current = requests.get(link_current)
 
-        with open(path_json('weather_current.json'), 'w') as f:
+        with open(management.path_json('weather_current.json'), 'w') as f:
             json.dump(response_link_current.json(), f, indent=2)
     
     def weather_5_day():
         link_five_day = f'http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units={temp_type}&appid={api_key}'
         response_link_five_day = requests.get(link_five_day)
         
-        with open(path_json('weather_5_days.json'), 'w') as f:
+        with open(management.path_json('weather_5_days.json'), 'w') as f:
             json.dump(response_link_five_day.json(), f, indent=2)
         
     weather_current()

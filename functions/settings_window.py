@@ -1,26 +1,18 @@
-# SETTINGS COG BUTTON
 
 from tkinter import *
 
-import os
-from pathlib import Path
-
-# from functions import messages
 from functions import settings
-# import settings
-settings_data = settings.open_settings()
-
 from functions import api
-# import api
-
-from functions import button_image
+from functions import weather_icons
+from functions import image_display
 
 
 def launch(window, canvas):
+    # OPEN SETTINGS JSON
+    settings_data = settings.open_settings()
 
     # SEARCH FIELD LENGTH
     search_field_length = 22
-    settings_data = settings.open_settings()
 
     # COLORS - FONT STYLE
     background_color = settings_data['background_color']
@@ -138,6 +130,8 @@ def launch(window, canvas):
         settings.save_settings(settings_data)
         # GET WEATHER DATA
         api.get_weather_data()
+        # DOWNLOAD MISSING WEATHER ICONS
+        weather_icons.download()
 
     city_select_button_instance = Buttons("Select", lambda: [city_selected()])
     city_select_button = city_select_button_instance.create()
@@ -184,7 +178,7 @@ def launch(window, canvas):
     close_button_instance = Buttons("x", lambda:[close(window)])
     close_button = close_button_instance.create()
     photo_size = 20
-    photo_close = button_image.create(photo_size,"icon_close.png")
+    photo_close = image_display.button(photo_size,"icon_close.png")
     close_button.configure(height=photo_size+2, width=photo_size+2, image = photo_close, activebackground='#505050')
 
 
