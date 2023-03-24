@@ -1,43 +1,46 @@
 {
   "coord": {
-    "lon": -82.1885,
-    "lat": 36.596
+    "lon": -0.092,
+    "lat": 51.5156
   },
   "weather": [
     {
-      "id": 803,
-      "main": "Clouds",
-      "description": "broken clouds",
-      "icon": "04n"
+      "id": 501,
+      "main": "Rain",
+      "description": "moderate rain",
+      "icon": "10d"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 56.1,
-    "feels_like": 55.51,
-    "temp_min": 51.42,
-    "temp_max": 61.66,
-    "pressure": 978,
-    "humidity": 87
+    "temp": 53.28,
+    "feels_like": 52.11,
+    "temp_min": 49.95,
+    "temp_max": 57.54,
+    "pressure": 997,
+    "humidity": 81
   },
   "visibility": 10000,
   "wind": {
-    "speed": 0,
-    "deg": 0
+    "speed": 10.36,
+    "deg": 230
+  },
+  "rain": {
+    "1h": 1.79
   },
   "clouds": {
-    "all": 75
+    "all": 40
   },
-  "dt": 1679648660,
+  "dt": 1679662060,
   "sys": {
     "type": 2,
-    "id": 2013490,
-    "country": "US",
-    "sunrise": 1679657206,
-    "sunset": 1679701397
+    "id": 2075535,
+    "country": "GB",
+    "sunrise": 1679637290,
+    "sunset": 1679681915
   },
-  "timezone": -14400,
-  "id": 4748993,
-  "name": "Bristol",
+  "timezone": 0,
+  "id": 6690593,
+  "name": "Barbican",
   "cod": 200
 }

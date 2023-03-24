@@ -7,6 +7,7 @@ from pathlib import Path
 from functions import settings
 from functions import settings_window
 from functions import image_display
+from functions import management
 
 
 # ACCESS TO SETTINGS_DB.JSON
@@ -42,40 +43,6 @@ canvas = Canvas(window, width=window_width, height=window_length, background = b
 canvas.create_rectangle(5-1, 5+2, window_width-5, window_length-5, outline=canvas_frame_color, fill=canvas_color)
 canvas.pack()
 
-# SEARCH FIELD LENGTH
-search_field_length = 40
-
-
-# class Buttons:
-#     def __init__(self, text, command):
-#         self.text = text
-#         self.command = command
-    
-#     def create(self):
-#         return Button(window,
-#                       height=button_height,
-#                       width=button_width, text = self.text, 
-#                       command = self.command, 
-#                       foreground=font_color, 
-#                       background=background_color, 
-#                       activeforeground=background_color, 
-#                       activebackground=font_color)
-
-
-# class Fields:  
-#     def __init__(self, width, background):
-#         self.width = width
-#         self.background = background
-    
-#     def create(self):
-#         return Text(window, 
-#                     height = 1, 
-#                     width = self.width, 
-#                     foreground=font_color, 
-#                     background=self.background, 
-#                     font=(font_style, font_size))
-
-
 
 ## WIDGETS
 # SETTINGS BUTTON
@@ -90,7 +57,61 @@ settings_button = Button(window,
                       activeforeground=background_color, 
                       activebackground='#505050')
 
+## TEXT, ICONS
+class Text:
+    def __init__(self, text, font_style, font_size):
+        self.text = text
+        self.font_style = font_style
+        self.font_size = font_size
+    
+    def create(self):
+        return Label(window,
+                     text = self.text,
+                     font = (self.font_style, self.font_size),
+                     foreground=font_color,
+                     background=background_color)
+
 ## CURRENT WEATHER DATA
+##LOAD WEATHER DATA
+current_w_dic = management.load_weather_data("weather_current.json")
+# CITY NAME
+city_name_instance = Text(settings_data['city_selected'],'Georgia', 18)
+city_name = city_name_instance.create()
+city_name.place(x=200, y=30)
+# TEMP / HUM / WIND - FONT SIZE / STYLE
+details_font_size = 15
+details_font_style = 'Arial'
+# TEMPERATURE
+temp_text = f"{current_w_dic['main']['temp']} \xb0"     # \xb0 = degree sign
+temp_instance = Text(temp_text, details_font_style, details_font_size)
+temp = temp_instance.create()
+temp.place(x=280, y=80)
+# HUMIDITY
+hum_text = f"{current_w_dic['main']['humidity'] }%"     # \xb0 = degree sign
+hum_instance = Text(hum_text, details_font_style, details_font_size)
+hum = hum_instance.create()
+hum.place(x=310, y=120)
+# WIND
+wind_text = f"{current_w_dic['wind']['speed']} W"     # \xb0 = degree sign
+wind_instance = Text(wind_text, details_font_style , details_font_size)
+wind = wind_instance.create()
+wind.place(x=310, y=160)
+# ICON
+icon_name = current_w_dic['weather'][0]['icon']
+icon_image = image_display.weather_icon(100, icon_name)
+icon_image_widget = Label(window, image=icon_image, background=canvas_color)
+icon_image_widget.place(x=150, y=90)
+# class Icon:  
+#     def __init__(self, size):
+#         self.size = size
+    
+#     def create(self):
+#         return Text(window, 
+#                     height = 1, 
+#                     width = self.width, 
+#                     foreground=font_color, 
+#                     background=self.background, 
+#                     font=(font_style, font_size))
 
 
   

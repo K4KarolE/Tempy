@@ -17,7 +17,8 @@ def button(image_size, picture_name):       # (24, "icon_close.png")
     return photo
 
 def weather_icon(image_size, icon_name):       # (24, "01d")
-    my_img_path = Path(main_directory, "docs", "weather_icons" , icon_name, ".png")
+    icon_name_png = f'{icon_name}.png'
+    my_img_path = Path(main_directory, "docs", "weather_icons" , icon_name_png)
     my_img = Image.open(my_img_path)
     width = int(image_size)
     height = int(image_size)

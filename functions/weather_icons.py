@@ -1,9 +1,8 @@
 '''
 - Checks the weather json files and downloads the missing icon images
-- Placed settings_window.py / Select button
+- Placed/actioned:  settings_window.py / Select button`s command
 '''
 import urllib.request
-import json
 import os
 from pathlib import Path
 
