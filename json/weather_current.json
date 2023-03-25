@@ -1,43 +1,43 @@
 {
   "coord": {
-    "lon": 19.1461,
-    "lat": 47.4814
+    "lon": -2.5973,
+    "lat": 51.4538
   },
   "weather": [
     {
-      "id": 800,
-      "main": "Clear",
-      "description": "clear sky",
-      "icon": "01n"
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 67.24,
-    "feels_like": 65.59,
-    "temp_min": 65.35,
-    "temp_max": 68.52,
-    "pressure": 1007,
-    "humidity": 41
+    "temp": 51.37,
+    "feels_like": 50.05,
+    "temp_min": 50.11,
+    "temp_max": 53.46,
+    "pressure": 1005,
+    "humidity": 82
   },
   "visibility": 10000,
   "wind": {
-    "speed": 4.61,
-    "deg": 220
+    "speed": 23.02,
+    "deg": 250
   },
   "clouds": {
-    "all": 0
+    "all": 100
   },
-  "dt": 1679677967,
+  "dt": 1679739122,
   "sys": {
     "type": 2,
-    "id": 2009313,
-    "country": "HU",
-    "sunrise": 1679632757,
-    "sunset": 1679677216
+    "id": 2029649,
+    "country": "GB",
+    "sunrise": 1679724154,
+    "sunset": 1679769015
   },
-  "timezone": 3600,
-  "id": 7284834,
-  "name": "Budapest X. keruelet",
+  "timezone": 0,
+  "id": 2654675,
+  "name": "Bristol",
   "cod": 200
 }

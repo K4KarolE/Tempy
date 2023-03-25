@@ -25,8 +25,8 @@ font_color = settings_data['font_color']
 # WINDOW
 window = Tk()
 window.title(settings_data['window_title'])
-window_width = 550
-window_length = 445
+window_width = settings_data['window_width']
+window_length = settings_data['window_original_length']
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
 window.geometry(f'{window_width}x{window_length}+%d+%d' % (screen_width/2-275, screen_height/2-125))    #   position to the middle of the screen
@@ -110,15 +110,15 @@ n = 0
 for item in time_list:
     time_instance = Text(item, details_font_style , 12)
     time = time_instance.create()
-    time.place(x=20 + n, y=160)
-    n += 65
+    time.place(x=window_width/5 + n, y=160)
+    n += 75
 
 five_days_matrix = management.load_weather_data('weather_5_days_matrix.json')
 x_counter = 1
-x_gap = 65
+x_gap = 75
 
 y_counter = 0
-y_gap = 40
+y_gap = 80
 five_day_icon_image = []            # avoid garbage collection
 five_day_icon_image_widget = []     # avoid garbage collection
 n=0
@@ -127,7 +127,7 @@ for item in five_days_matrix.values():
         five_day_icon_name = item['weather'][0]['icon']
         five_day_icon_image.append(image_display.weather_icon(50, five_day_icon_name))
         five_day_icon_image_widget.append(Label(window, image=five_day_icon_image[n], background=canvas_color))
-        five_day_icon_image_widget[n].place(x=-45 + x_counter * x_gap, y=180 + y_counter * y_gap)
+        five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap, y=200 + y_counter * y_gap)
         n += 1
     if x_counter % 8 == 0:
         x_counter = 0

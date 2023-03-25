@@ -26,15 +26,16 @@ def launch(window, canvas):
     button_width = 10
     
     # WINDOW     
-    window_width =  550    
-    window_length = 650    
-    window.geometry(f'{window_width}x{window_length}')
+    window_width =  settings_data['window_width']
+    window_original_length = settings_data['window_original_length']
+    window_settings_length = settings_data['window_settings_length']   
+    window.geometry(f'{window_width}x{window_settings_length}')
     
     # RESIZE CANVAS - AADD NEW FRAME/RECTANGLE
     canvas_color = settings_data['background_color']
     canvas_frame_color = settings_data['canvas_frame_color']
-    canvas.configure(width=window_width, height=window_length, bg=background_color)
-    canvas.create_rectangle(5-1, 445, window_width-5, window_length-5, outline=canvas_frame_color, fill=canvas_color)
+    canvas.configure(width=window_width, height=window_settings_length, bg=background_color)
+    canvas.create_rectangle(5-1, window_original_length, window_width-5, window_settings_length-5, outline=canvas_frame_color, fill=canvas_color)
 
     # CLASSES
     class Buttons:
@@ -174,9 +175,9 @@ def launch(window, canvas):
     ## 'X' - CLOSE BUTTON
     def close(window):
         # WINDOW     
-        window_width =  550    
-        window_length = 445    
-        window.geometry(f'{window_width}x{window_length}')
+        window_width =  settings_data['window_width']  
+        window_original_length = settings_data['window_original_length']   
+        window.geometry(f'{window_width}x{window_original_length}')
 
     close_button_instance = Buttons("x", lambda:[close(window)])
     close_button = close_button_instance.create()
@@ -191,7 +192,7 @@ def launch(window, canvas):
     y_field = 20
     # BUTTON
     x_button = 300
-    y_button_base = 500
+    y_button_base = settings_data['window_settings_length']-150
 
     def y_location(gap):
         location = y_button_base + 20 * gap
@@ -212,7 +213,7 @@ def launch(window, canvas):
     city_select_button.place(x=x_button, y=y_location(4))
 
     # CLOSE BUTTON
-    close_button.place(x=window_width-45, y=y_location(-2))
+    close_button.place(x=window_width-45, y=y_location(-1))
 
     window.mainloop()
 
