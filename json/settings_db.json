@@ -1,25 +1,21 @@
 {
   "city_list": {
-    "Bristol, GB": {
-      "lat": 51.4538022,
-      "lon": -2.5972985
+    "Budapest, HU": {
+      "lat": 47.48138955,
+      "lon": 19.14609412691246
     },
-    "Bristol, US, Virginia": {
-      "lat": 36.5959685,
-      "lon": -82.1885009
+    "Budapest, US, Missouri": {
+      "lat": 36.7689441,
+      "lon": -90.710953
     },
-    "Bristol, US, Connecticut": {
-      "lat": 41.6735209,
-      "lon": -72.9464859
-    },
-    "Bristol, US, Tennessee": {
-      "lat": 36.5945034,
-      "lon": -82.1885212
+    "Budapest, US, Georgia": {
+      "lat": 33.7151066,
+      "lon": -85.2180055
     }
   },
-  "city_selected": "Bristol, GB",
+  "city_selected": "Budapest, HU",
   "city_selected_name": "London",
-  "temp_type_selected": "Fahrenheit",
+  "temp_type_selected": "Celsius",
   "temp_type": {
     "Fahrenheit": "imperial",
     "Celsius": "metric"

@@ -3,6 +3,9 @@ import os
 from tkinter import *
 from pathlib import Path
 
+from datetime import datetime
+from datetime import timedelta
+
 # from functions import messages
 from functions import settings
 from functions import settings_window
@@ -84,7 +87,8 @@ details_font_style = 'Arial'
 details_y_base = 60
 details_y_gap = 30
 # TEMPERATURE
-temp_text = f"{current_w_dic['main']['temp']} \xb0"     # \xb0 = degree sign
+temp_type = settings_data['temp_type_selected'][0]
+temp_text = f"{current_w_dic['main']['temp']}\xb0 {temp_type}"     # \xb0 = degree sign
 temp_instance = Text(temp_text, details_font_style, details_font_size)
 temp = temp_instance.create()
 temp.place(x=280, y=details_y_base + details_y_gap * 0)
@@ -105,6 +109,7 @@ icon_image_widget = Label(window, image=icon_image, background=canvas_color)
 icon_image_widget.place(x=170, y=65)
 
 # 5 DAY WEATHER DATA
+# TIMES
 time_list = [ '00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
 n = 0
 for item in time_list:
@@ -113,6 +118,20 @@ for item in time_list:
     time.place(x=window_width/5 + n, y=160)
     n += 75
 
+# DAYS
+days_list = ["Today"]   # Today, Sunday, Monday, ..
+for i in range(1,6):
+    days_list.append((datetime.now()+timedelta(i)).strftime('%A'))
+
+n = 0
+for item in days_list:
+    days_instance = Text(item, details_font_style , 12)
+    days = days_instance.create()
+    days.place(x=30, y=220 + n)
+    n += 79
+
+
+# ICONS
 five_days_matrix = management.load_weather_data('weather_5_days_matrix.json')
 x_counter = 1
 x_gap = 75
@@ -125,7 +144,7 @@ n=0
 for item in five_days_matrix.values():
     if len(item) != 0:
         five_day_icon_name = item['weather'][0]['icon']
-        five_day_icon_image.append(image_display.weather_icon(50, five_day_icon_name))
+        five_day_icon_image.append(image_display.weather_icon(60, five_day_icon_name))
         five_day_icon_image_widget.append(Label(window, image=five_day_icon_image[n], background=canvas_color))
         five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap, y=200 + y_counter * y_gap)
         n += 1
