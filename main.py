@@ -32,7 +32,7 @@ window_width = settings_data['window_width']
 window_length = settings_data['window_original_length']
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
-window.geometry(f'{window_width}x{window_length}+%d+%d' % (screen_width/2-275, screen_height/2-125))    #   position to the middle of the screen
+window.geometry(f'{window_width}x{window_length}+%d+%d' % (screen_width/2-275, screen_height/5))    #   position to the middle of the screen
 window.resizable(0,0)   # locks the main window
 window.configure(background=settings_data['background_color'])
 # ICON
@@ -47,11 +47,16 @@ canvas.create_rectangle(5-1, 5+2, window_width-5, window_length-5, outline=canva
 canvas.pack()
 
 
-## WIDGETS
-# SETTINGS BUTTON
+### WIDGETS
+## SETTINGS BUTTON
+launched = 0
+def window_launched_counter(): # CREATING THE SETTINGS WIDOW WIDGETS ONLY ONCE @ FIRST OPENING
+    global launched
+    launched += 1
+
 photo_cog = image_display.button(24,"icon_cog_popup.ico")
 settings_button = Button(window,
-                      command = lambda: [settings_window.launch(window, canvas)],
+                      command = lambda: [window_launched_counter(), settings_window.launch(launched, window, canvas)],
                       image = photo_cog, 
                       height = 30,
                       width = 30,

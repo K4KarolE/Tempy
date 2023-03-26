@@ -1,16 +1,16 @@
 {
   "city_list": {
-    "Budapest, HU": {
-      "lat": 47.48138955,
-      "lon": 19.14609412691246
+    "Bet, PK": {
+      "lat": 27.4281,
+      "lon": 66.4913
     },
-    "Budapest, US, Missouri": {
-      "lat": 36.7689441,
-      "lon": -90.710953
+    "Bet, IL": {
+      "lat": 31.2553377,
+      "lon": 34.7920936
     },
-    "Budapest, US, Georgia": {
-      "lat": 33.7151066,
-      "lon": -85.2180055
+    "Bet, SE": {
+      "lat": 57.614943,
+      "lon": 13.9363905
     }
   },
   "city_selected": "Budapest, HU",
