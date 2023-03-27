@@ -143,8 +143,6 @@ def launch(launched, window, canvas):
             api.get_weather_data()
             # DOWNLOAD MISSING WEATHER ICONS
             weather_icons.download()
-            # CREATE WEATHER_5_DAYS_MATRIX.JSON
-            five_days_fcast_matrix.create()
 
         city_select_button_instance = Buttons("Select", lambda: [city_selected()])
         city_select_button = city_select_button_instance.create()

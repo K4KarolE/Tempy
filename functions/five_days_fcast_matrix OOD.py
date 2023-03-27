@@ -15,6 +15,7 @@ from datetime import date
 import json
 
 from functions import management
+# import management
 
 def create():
     # TIMESTAMPS AND '5 DAYS FORECAST MATRIX' CREATION
@@ -29,10 +30,8 @@ def create():
         counter += 1
 
     # INT DATETIME CHECK
-    # print(five_day_dic)
-    # import datetime
-    # for i in five_day_dic:
-    #     print(datetime.datetime.fromtimestamp(i))
+    # for i in five_day_fcast_matrix:
+    #     print(i, datetime.fromtimestamp(i))
 
 
     # '5 DAYS FORECAST MATRIX' VALUE ALLOCATION  
@@ -44,3 +43,5 @@ def create():
 
     with open(management.path_json('weather_5_days_matrix.json'), 'w') as f:
                 json.dump(five_day_fcast_matrix, f, indent=2)
+
+create()

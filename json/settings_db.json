@@ -1,19 +1,23 @@
 {
   "city_list": {
-    "Bet, PK": {
-      "lat": 27.4281,
-      "lon": 66.4913
+    "Bristol, GB": {
+      "lat": 51.4538022,
+      "lon": -2.5972985
     },
-    "Bet, IL": {
-      "lat": 31.2553377,
-      "lon": 34.7920936
+    "Bristol, US, Virginia": {
+      "lat": 36.5959685,
+      "lon": -82.1885009
     },
-    "Bet, SE": {
-      "lat": 57.614943,
-      "lon": 13.9363905
+    "Bristol, US, Connecticut": {
+      "lat": 41.6735209,
+      "lon": -72.9464859
+    },
+    "Bristol, US, Tennessee": {
+      "lat": 36.5945034,
+      "lon": -82.1885212
     }
   },
-  "city_selected": "Budapest, HU",
+  "city_selected": "Bristol, GB",
   "city_selected_name": "London",
   "temp_type_selected": "Celsius",
   "temp_type": {

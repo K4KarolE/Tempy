@@ -10,6 +10,7 @@ from functions import management
 
 
 # API KEY
+# OpenWeather API - Plan Free: 60 calls/minute - 1,000,000 calls/month
 path_api_key = Path(management.main_directory(), 'api_key.txt')
 file = open(path_api_key)
 api_key = file.read()

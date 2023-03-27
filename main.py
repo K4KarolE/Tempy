@@ -137,8 +137,13 @@ for item in days_list:
 
 
 # ICONS
-five_days_matrix = management.load_weather_data('weather_5_days_matrix.json')
-x_counter = 1
+five_days_fcast = management.load_weather_data('weather_5_days.json')
+# DELAY CALC
+five_days_fcast_first_datetime = five_days_fcast['list'][0]['dt']   # app triggered at 20:00->only the 21:00 data will be displayed
+todays_first_datetime = management.todays_first_datetime()
+delay = int((five_days_fcast_first_datetime - todays_first_datetime)/10800) 
+# DISPLAY
+x_counter = 1 + delay # only available data will be displayed at the correct time spot
 x_gap = 75
 
 y_counter = 0
@@ -146,13 +151,12 @@ y_gap = 80
 five_day_icon_image = []            # avoid garbage collection
 five_day_icon_image_widget = []     # avoid garbage collection
 n=0
-for item in five_days_matrix.values():
-    if len(item) != 0:
-        five_day_icon_name = item['weather'][0]['icon']
-        five_day_icon_image.append(image_display.weather_icon(60, five_day_icon_name))
-        five_day_icon_image_widget.append(Label(window, image=five_day_icon_image[n], background=canvas_color))
-        five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap, y=200 + y_counter * y_gap)
-        n += 1
+for item in five_days_fcast['list']:
+    five_day_icon_name = item['weather'][0]['icon']
+    five_day_icon_image.append(image_display.weather_icon(60, five_day_icon_name))
+    five_day_icon_image_widget.append(Label(window, image=five_day_icon_image[n], background=canvas_color))
+    five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap, y=200 + y_counter * y_gap)
+    n += 1
     if x_counter % 8 == 0:
         x_counter = 0
         y_counter += 1
