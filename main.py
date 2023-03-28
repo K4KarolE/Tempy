@@ -81,7 +81,7 @@ class Text:
                      foreground=font_color,
                      background=background_color)
     
-# ## GET WEATHER DATA - BY STARTING THE APP AUTOMATICALLY GET THE LAST USED CITY`S NEW WEATHER DETAILS
+# # ## GET WEATHER DATA - BY STARTING THE APP AUTOMATICALLY GET THE LAST USED CITY`S NEW WEATHER DETAILS
 # api.get_weather_data()
 # # DOWNLOAD MISSING WEATHER ICONS
 # weather_icons.download()
@@ -167,7 +167,7 @@ for item in days_list:
     n += 81
 
 
-# ICONS
+# ICONS - WEATHER DATA
 five_days_fcast = management.load_weather_data('weather_5_days.json')
 # DELAY CALC
 five_days_fcast_first_datetime = five_days_fcast['list'][0]['dt']   # app triggered at 20:00->only the 21:00 data will be displayed
@@ -183,20 +183,55 @@ five_day_icon_image = []            # avoid garbage collection
 five_day_icon_image_widget = []     # avoid garbage collection
 n=0
 for item in five_days_fcast['list']:
+    # WEATHER ICONS
     five_day_icon_name = item['weather'][0]['icon']
     five_day_icon_image.append(image_display.weather_icon(60, five_day_icon_name))
     five_day_icon_image_widget.append(Label(window, image=five_day_icon_image[n], background=canvas_color))
-    five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap - 5, y=time_list_y + 40 + y_counter * y_gap)
+    five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap - 5, y=time_list_y + 30 + y_counter * y_gap)
+    
+    # WEATHER DATA
+    five_day_w_data_font_size = 9
+    five_day_w_data_widget_instance = []
+    five_day_w_data_widget = []
+    temp_five_day = round(item['main']['temp'])
+    hum_five_day = item['main']['humidity']
+    five_day_w_data = f'{temp_five_day}\xb0 {hum_five_day}%'
+    five_day_w_data_widget = Text(five_day_w_data, details_font_style, five_day_w_data_font_size).create()
+    five_day_w_data_widget.place(x= window_width/5 - x_gap + x_counter * x_gap + 25, y=time_list_y + 90 + y_counter * y_gap, anchor=CENTER)
+
     n += 1
     if x_counter % 8 == 0:
         x_counter = 0
         y_counter += 1
     x_counter += 1
 
-    
+# x_counter = 1 + delay # only available data will be displayed at the correct time spot
+# x_gap = 75
 
+# y_counter = 0
+# y_gap = 80
+# n=0
+# for item in five_days_fcast['list']:   
+
+#     n += 1
+#     if x_counter % 8 == 0:
+#         x_counter = 0
+#         y_counter += 1
+#     x_counter += 1
+
+# print(five_day_icon_image_widget)
+
+# ## REMOVE PREVIOUS WIDGETS
+# # CURRENT WEATHER
+def remove_previous_widgest():
+    for item in [city_name, temp, hum, wind, icon_image_widget, sunrise, sunset]:
+        item.destroy()
+    # FIVE DAYS FORECAST
+    # ICONS
+    for item in five_day_icon_image_widget:
+        item.destroy()
        
-
+# management.remove_previous_widgets(city_name, temp, hum, wind, icon_image_widget, sunrise, sunset, five_day_icon_image_widget)
 
 
 

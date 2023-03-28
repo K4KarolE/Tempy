@@ -6,6 +6,7 @@ from functions import api
 from functions import weather_icons
 from functions import image_display
 
+
 def launch(launched, window, canvas):
     # OPEN SETTINGS JSON
     settings_data = settings.open_settings()
