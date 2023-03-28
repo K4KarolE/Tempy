@@ -144,6 +144,7 @@ def launch(launched, window, canvas):
             # DOWNLOAD MISSING WEATHER ICONS
             weather_icons.download()
 
+
         city_select_button_instance = Buttons("Select", lambda: [city_selected()])
         city_select_button = city_select_button_instance.create()
         city_select_button.configure(state='disabled') 

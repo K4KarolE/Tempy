@@ -66,6 +66,7 @@ settings_button = Button(window,
                       background=background_color, 
                       activeforeground=background_color, 
                       activebackground='#505050')
+settings_button.place(x=window_width - 50, y=20)
 
 ## TEXT, ICONS
 class Text:
@@ -190,90 +191,38 @@ for item in five_days_fcast['list']:
     five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap - 5, y=time_list_y + 30 + y_counter * y_gap)
     
     # WEATHER DATA
+    # able to add TEXT to list or dictionary, but apart from the last item they will be garbage collected
+    # -> not able to remove them from the screen using the .destroy() function, only the last item will be terminated
+    # -> not able to refresh the main page with the new city weather details, app has to be restarted to display
     five_day_w_data_font_size = 9
     five_day_w_data_widget_instance = []
-    five_day_w_data_widget = []
     temp_five_day = round(item['main']['temp'])
     hum_five_day = item['main']['humidity']
     five_day_w_data = f'{temp_five_day}\xb0 {hum_five_day}%'
     five_day_w_data_widget = Text(five_day_w_data, details_font_style, five_day_w_data_font_size).create()
     five_day_w_data_widget.place(x= window_width/5 - x_gap + x_counter * x_gap + 25, y=time_list_y + 90 + y_counter * y_gap, anchor=CENTER)
-
+    
     n += 1
     if x_counter % 8 == 0:
         x_counter = 0
         y_counter += 1
     x_counter += 1
 
-# x_counter = 1 + delay # only available data will be displayed at the correct time spot
-# x_gap = 75
-
-# y_counter = 0
-# y_gap = 80
-# n=0
-# for item in five_days_fcast['list']:   
-
-#     n += 1
-#     if x_counter % 8 == 0:
-#         x_counter = 0
-#         y_counter += 1
-#     x_counter += 1
-
-# print(five_day_icon_image_widget)
-
-# ## REMOVE PREVIOUS WIDGETS
-# # CURRENT WEATHER
-def remove_previous_widgest():
-    for item in [city_name, temp, hum, wind, icon_image_widget, sunrise, sunset]:
-        item.destroy()
-    # FIVE DAYS FORECAST
-    # ICONS
-    for item in five_day_icon_image_widget:
-        item.destroy()
-       
-# management.remove_previous_widgets(city_name, temp, hum, wind, icon_image_widget, sunrise, sunset, five_day_icon_image_widget)
 
 
-
-# class Icon:  
-#     def __init__(self, size):
-#         self.size = size
+# # ## REMOVE PREVIOUS WIDGETS
+# # # CURRENT WEATHER
+# def remove_previous_widgest():
+#     for item in [city_name, temp, hum, wind, icon_image_widget, sunrise, sunset]:
+#         item.destroy()
+#     # FIVE DAYS FORECAST
+#     # ICONS
+#     for item in five_day_icon_image_widget:
+#         item.destroy()
     
-#     def create(self):
-#         return Text(window, 
-#                     height = 1, 
-#                     width = self.width, 
-#                     foreground=font_color, 
-#                     background=self.background, 
-#                     font=(font_style, font_size))
-
-
-  
-
-### DISPLAY WIDGETS
-def display_widgets():
-    # BASE VALUES
-    # FIELD
-    # x_field = 17
-    # y_field = 20
-    # # BUTTON
-    # x_button = 350
-    # y_button_base = 15
-    # y_diff_from_start = 15
-
-    # def y_button(gap):
-    #     location = y_button_base + 23 * gap
-    #     return location
-        
-    # SETTINGS BUTTON
-    settings_button.place(x=window_width - 50, y=20)
-
-
-    # THUMBNAIL
-    # thumbnail.place(x=thumbnail_x, y=thumbnail_y)
-
-
-display_widgets()
-
-
+    # WEATHER DATA
+    # able to add TEXT to list or dictionary, but apart from the last item they will be garbage collected
+    # -> not able to remove them from the screen using the .destroy() function, only the last item will be terminated
+    # -> not able to refresh the main page with the new city weather details, app has to be restarted to display
+       
 window.mainloop()
