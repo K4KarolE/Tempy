@@ -37,11 +37,6 @@ def find_city(city):
     settings_data['city_list'] = city_list
     settings.save_settings(settings_data)
 
-    # for i in city_list:
-    #     print(f'{i}: {city_list[i]["lat"]}, {city_list[i]["lon"]}')
-        # Chelsea, GB, England: 51.4875167, -0.1687007
-
-
 
 ## GET WEATHER DATA
 def get_weather_data():

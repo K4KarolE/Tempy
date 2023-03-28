@@ -27,6 +27,3 @@ def todays_first_datetime():
     today_datetime_zero = datetime.strptime(str(today_date), '%Y-%m-%d') # 2023-03-23 00:00:00
     datetime_int  = int(today_datetime_zero.timestamp())    # 1679529600
     return datetime_int
-
-
-

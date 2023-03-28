@@ -1,7 +1,6 @@
 import json
 from functions import management
 
-
 path_settings_json = management.path_json("settings_db.json")   
 
 def open_settings():

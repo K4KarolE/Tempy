@@ -1,37 +1,41 @@
 {
   "city_list": {
-    "Bristol, GB": {
-      "lat": 51.4538022,
-      "lon": -2.5972985
+    "Putney, GB": {
+      "lat": 51.4625524,
+      "lon": -0.2167462
     },
-    "Bristol, US, Virginia": {
-      "lat": 36.5959685,
-      "lon": -82.1885009
+    "Putney, US, Vermont": {
+      "lat": 42.9750374,
+      "lon": -72.5219215
     },
-    "Bristol, US, Connecticut": {
-      "lat": 41.6735209,
-      "lon": -72.9464859
+    "Putney, US, West Virginia": {
+      "lat": 38.2964913,
+      "lon": -81.3728933
     },
-    "Bristol, US, Tennessee": {
-      "lat": 36.5945034,
-      "lon": -82.1885212
+    "Putney, AU": {
+      "lat": -33.826067,
+      "lon": 151.1064224
+    },
+    "Putney, US, Kentucky": {
+      "lat": 36.9053682,
+      "lon": -83.2262868
     }
   },
-  "city_selected": "Bristol, GB",
+  "city_selected": "Putney, GB",
   "city_selected_name": "London",
   "temp_type_selected": "Celsius",
   "temp_type": {
     "Fahrenheit": "imperial",
     "Celsius": "metric"
   },
-  "background_color": "#DEDEDE",
-  "field_background_color": "#DEDEDE",
-  "canvas_frame_color": "#989898",
+  "background_color": "#6DB6FF",
+  "field_background_color": "#6DB6FF",
   "font_style": "Arial",
   "font_size": "12",
   "font_color": "black",
   "window_title": "Tempy",
   "window_width": 800,
   "window_original_length": 750,
-  "window_settings_length": 950
+  "window_settings_length": 950,
+  "window_background_color": "#6DB6FF"
 }

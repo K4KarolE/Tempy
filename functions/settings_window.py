@@ -7,13 +7,56 @@ from functions import weather_icons
 from functions import image_display
 
 
-def launch(launched, window, canvas):
+def launch(launched, window):
     # OPEN SETTINGS JSON
     settings_data = settings.open_settings()
 
-    # CREATING THE SETTINGS WIDOW WIDGETS ONLY ONCE @ FIRST OPENING
+    # CLASSES - BUTTONS, FIELDS
+    class Buttons:
+        def __init__(self, text, command):
+            self.text = text
+            self.command = command
+        
+        def create(self):
+            return Button(window, 
+                            height=button_height,
+                            width=button_width,
+                            text = self.text,
+                            command = self.command,
+                            foreground=font_color,
+                            background=background_color,
+                            activeforeground=background_color,
+                            activebackground=font_color,
+                            font=(font_style, font_size))
+        # CELSIUS - FAHRENHEIT
+        def selected(self):
+            return self.configure(foreground=background_color,
+                            background="#505050",
+                            activeforeground=background_color,
+                            activebackground=background_color)
+        
+        def standard(self):
+            return self.configure(foreground=font_color,
+                            background=background_color,
+                            activeforeground=background_color,
+                            activebackground=font_color)
+
+    class Fields:
+        def __init__(self, width, background):
+            self.width = width
+            self.background = background
+        
+        def create(self):
+            return Text(window,
+                        height = 1,
+                        width = self.width,
+                        foreground=font_color,
+                        background=self.background,
+                        font=(font_style, "14"))    
+
+    # CREATING THE SETTINGS WINDOW ONLY ONCE @ FIRST OPENING
     # RE-CLICKING THE SETTINGS BUTTON / REOPENING THE SETTINGS WINDOW:
-    # ONLY WINDOW RESIZE, NO WIDGET CREATION
+    # ONLY WINDOW RESIZE, NO NEW WIDGET CREATION
     if launched > 1:   
         window_width =  settings_data['window_width']
         window_settings_length = settings_data['window_settings_length']   
@@ -34,65 +77,14 @@ def launch(launched, window, canvas):
         
         # WINDOW     
         window_width =  settings_data['window_width']
-        window_original_length = settings_data['window_original_length']
         window_settings_length = settings_data['window_settings_length']   
         window.geometry(f'{window_width}x{window_settings_length}')
         
-        # RESIZE CANVAS - AADD NEW FRAME/RECTANGLE
-        canvas_color = settings_data['background_color']
-        canvas_frame_color = settings_data['canvas_frame_color']
-        canvas.configure(width=window_width, height=window_settings_length, bg=background_color)
-        canvas.create_rectangle(5-1, window_original_length, window_width-5, window_settings_length-5, outline=canvas_frame_color, fill=canvas_color)
 
-        # CLASSES
-        class Buttons:
-            def __init__(self, text, command):
-                self.text = text
-                self.command = command
-            
-            def create(self):
-                return Button(window, 
-                                height=button_height,
-                                width=button_width,
-                                text = self.text,
-                                command = self.command,
-                                foreground=font_color,
-                                background=background_color,
-                                activeforeground=background_color,
-                                activebackground=font_color,
-                                font=(font_style, font_size))
-            # CELSIUS - FAHRENHEIT
-            def selected(self):
-                return self.configure(foreground=background_color,
-                                background="#505050",
-                                activeforeground=background_color,
-                                activebackground=background_color)
-            
-            def standard(self):
-                return self.configure(foreground=font_color,
-                                background=background_color,
-                                activeforeground=background_color,
-                                activebackground=font_color)
-
-        class Fields:
-            def __init__(self, width, background):
-                self.width = width
-                self.background = background
-            
-            def create(self):
-                return Text(window,
-                            height = 1,
-                            width = self.width,
-                            foreground=font_color,
-                            background=self.background,
-                            font=(font_style, "14"))
-
-
-        ## WIDGETS
+        ### WIDGETS
         ## CITY SEARCH - FIELD + BUTTON
         city_search_field_instance = Fields(search_field_length, "white")
         city_search_field = city_search_field_instance.create()
-
 
         def city_search(city_select_roll_down):     # city_select_roll_down: to able to remove the previous widget
             ## CITY SEARCH
@@ -144,7 +136,6 @@ def launch(launched, window, canvas):
             # DOWNLOAD MISSING WEATHER ICONS
             weather_icons.download()
 
-
         city_select_button_instance = Buttons("Select", lambda: [city_selected()])
         city_select_button = city_select_button_instance.create()
         city_select_button.configure(state='disabled') 
@@ -164,7 +155,6 @@ def launch(launched, window, canvas):
         if settings_data['temp_type_selected'] == "Celsius":
             Buttons.selected(celsius_button)
         
-
         ## FAHRENHEIT - BUTTON
         def fahrenheit():
             #SAVE
@@ -187,7 +177,6 @@ def launch(launched, window, canvas):
             window_original_length = settings_data['window_original_length']
             window.geometry(f'{window_width}x{window_original_length}')
             
-    
         close_button_instance = Buttons("x", lambda:[close(window)])
         close_button = close_button_instance.create()
         photo_size = 20
