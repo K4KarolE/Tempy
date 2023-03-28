@@ -1,23 +1,27 @@
 {
   "city_list": {
-    "Bristol, GB": {
-      "lat": 51.4538022,
-      "lon": -2.5972985
+    "London, GB": {
+      "lat": 51.5073219,
+      "lon": -0.1276474
     },
-    "Bristol, US, Virginia": {
-      "lat": 36.5959685,
-      "lon": -82.1885009
+    "City of London, GB": {
+      "lat": 51.5156177,
+      "lon": -0.0919983
     },
-    "Bristol, US, Connecticut": {
-      "lat": 41.6735209,
-      "lon": -72.9464859
+    "London, CA": {
+      "lat": 42.9832406,
+      "lon": -81.243372
     },
-    "Bristol, US, Tennessee": {
-      "lat": 36.5945034,
-      "lon": -82.1885212
+    "Chelsea, GB": {
+      "lat": 51.4875167,
+      "lon": -0.1687007
+    },
+    "London, US, Kentucky": {
+      "lat": 37.1289771,
+      "lon": -84.0832646
     }
   },
-  "city_selected": "Bristol, GB",
+  "city_selected": "City of London, GB",
   "city_selected_name": "London",
   "temp_type_selected": "Celsius",
   "temp_type": {

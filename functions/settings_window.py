@@ -5,7 +5,6 @@ from functions import settings
 from functions import api
 from functions import weather_icons
 from functions import image_display
-from functions import five_days_fcast_matrix
 
 def launch(launched, window, canvas):
     # OPEN SETTINGS JSON

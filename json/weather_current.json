@@ -1,43 +1,47 @@
 {
   "coord": {
-    "lon": -2.6,
-    "lat": 51.45
+    "lon": -0.092,
+    "lat": 51.5156
   },
   "weather": [
     {
-      "id": 801,
-      "main": "Clouds",
-      "description": "few clouds",
-      "icon": "02n"
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 7.5,
-    "feels_like": 4.4,
-    "temp_min": 6.25,
-    "temp_max": 8.63,
-    "pressure": 1024,
-    "humidity": 85
+    "temp": 6.15,
+    "feels_like": 3.8,
+    "temp_min": 4.84,
+    "temp_max": 6.8,
+    "pressure": 1021,
+    "humidity": 75
   },
   "visibility": 10000,
   "wind": {
-    "speed": 5.14,
-    "deg": 160
+    "speed": 3.13,
+    "deg": 136,
+    "gust": 4.47
+  },
+  "rain": {
+    "1h": 0.18
   },
   "clouds": {
-    "all": 20
+    "all": 100
   },
-  "dt": 1679949001,
+  "dt": 1679982335,
   "sys": {
     "type": 2,
-    "id": 2029649,
+    "id": 2075535,
     "country": "GB",
-    "sunrise": 1679896679,
-    "sunset": 1679942016
+    "sunrise": 1679982338,
+    "sunset": 1680027915
   },
   "timezone": 3600,
-  "id": 3333134,
-  "name": "Bristol",
+  "id": 6690594,
+  "name": "Old Street",
   "cod": 200
 }
