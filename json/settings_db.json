@@ -21,6 +21,7 @@
       "lon": -83.2262868
     }
   },
+  "city_search_valid": "True",
   "city_selected": "Putney, GB",
   "city_selected_name": "London",
   "temp_type_selected": "Celsius",

@@ -5,6 +5,7 @@ from functions import settings
 from functions import api
 from functions import weather_icons
 from functions import image_display
+from functions import messages
 
 
 def launch(launched, window):
@@ -89,24 +90,28 @@ def launch(launched, window):
         def city_search(city_select_roll_down):     # city_select_roll_down: to able to remove the previous widget
             ## CITY SEARCH
             city = city_search_field.get("1.0", "end-1c")
-            api.find_city(city)
+            if city != '':
+                api.find_city(city)
 
-            ## CITY SELECT
-            # CREATE LIST
-            settings_data = settings.open_settings()
-            city_select_list = []
-            for item in settings_data['city_list']:
-                city_select_list.append(item)
-            city_select_list.sort()
-            # REMOVE PREVIOUS WIDGET
-            city_select_roll_down.destroy()
-            # DISPLAY THE NEW ROLL DOWN MENU  
-            city_select_roll_down_clicked.set(city_select_list[0]) 
-            city_select_roll_down = OptionMenu( window, city_select_roll_down_clicked, *city_select_list, command=None)
-            city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
-            city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')
-            city_select_roll_down.place(x=25, y=y_location(4))
-            city_select_button.configure(state='normal') 
+                ## CITY SELECT
+                # CREATE LIST
+                settings_data = settings.open_settings()
+                if settings_data['city_search_valid'] == "True":
+                    city_select_list = []
+                    for item in settings_data['city_list']:
+                        city_select_list.append(item)
+                    city_select_list.sort()
+                    # REMOVE PREVIOUS WIDGET
+                    city_select_roll_down.destroy()
+                    # DISPLAY THE NEW ROLL DOWN MENU  
+                    city_select_roll_down_clicked.set(city_select_list[0]) 
+                    city_select_roll_down = OptionMenu( window, city_select_roll_down_clicked, *city_select_list, command=None)
+                    city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
+                    city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')
+                    city_select_roll_down.place(x=25, y=y_location(4))
+                    city_select_button.configure(state='normal')
+            else:
+                messages.error_pop_up('Error','empty_city_search_field')
 
         city_search_button_instance = Buttons("Search", lambda:[city_search(city_select_roll_down)])
         city_search_button = city_search_button_instance.create()
@@ -116,7 +121,7 @@ def launch(launched, window):
         # ROLL DOWN MENU
         city_select_list=["None"]
         city_select_roll_down_clicked = StringVar()
-        city_select_roll_down_clicked.set("  Search for the city first ")
+        city_select_roll_down_clicked.set("  Search for a city first  ")
         city_select_roll_down = OptionMenu(window, city_select_roll_down_clicked, *city_select_list, command=None)     
         city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
         city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')

@@ -6,7 +6,6 @@ from pathlib import Path
 from datetime import datetime
 from datetime import timedelta
 
-# from functions import messages
 from functions import settings
 from functions import api
 from functions import weather_icons
