@@ -2,9 +2,9 @@
 ## Weather forecast app using OpenWeather API - WORK IN PROGRESS
 <br>
 <div align="center">
-    <img src="docs/screenshot/in_progress.png"</img> 
+    <img src="docs/screenshot/main.png"</img> 
 </div>
 <br>
 <div align="center">
-    <img src="docs/screenshot/in_progress_02.png"</img> 
+    <img src="docs/screenshot/main_with_settings.png"</img> 
 </div>
