@@ -29,10 +29,10 @@ class Text:
                      background=background_color)
 
 
-# ## GET WEATHER DATA - BY STARTING THE APP AUTOMATICALLY GET THE LAST USED CITY`S NEW WEATHER DETAILS
-# api.get_weather_data()
-# # DOWNLOAD MISSING WEATHER ICONS
-# weather_icons.download()
+## GET WEATHER DATA - BY STARTING THE APP AUTOMATICALLY GET THE LAST USED CITY`S NEW WEATHER DETAILS
+api.get_weather_data()
+# DOWNLOAD MISSING WEATHER ICONS
+weather_icons.download()
 # ACCESS TO SETTINGS_DB.JSON
 settings_data = settings.open_settings()   
 
@@ -99,12 +99,12 @@ current_w_dic = management.load_weather_data("weather_current.json")
 city_name_text = settings_data['city_selected']
 city_name_instance = Text(city_name_text, font_style, 18)
 city_name = city_name_instance.create()
-city_name.place(x=window_width/2-10, y=40, anchor = CENTER)
+city_name.place(x=window_width/2-10, y=90, anchor = CENTER)
 
 ## TEMP / HUM / WIND - FONT SIZE / STYLE
 details_font_size = 15
 details_font_style = font_style
-details_y_base = 70
+details_y_base = 120
 details_y_gap = 30
 
 # TEMPERATURE
@@ -134,7 +134,7 @@ wind.place(x=window_width/2, y=details_y_base + details_y_gap * 2, anchor = NW)
 icon_name = current_w_dic['weather'][0]['icon']
 icon_image = image_display.weather_icon(80, icon_name)
 icon_image_widget = Label(window, image=icon_image, background=window_background_color)
-icon_image_widget.place(x=window_width/2, y=75, anchor = NE)
+icon_image_widget.place(x=window_width/2, y=125, anchor = NE)
 
 # SUNRISE
 sunrise_timestamp = current_w_dic['sys']['sunrise']
@@ -159,7 +159,7 @@ sunset.place(x=window_width/2+100+5, y=details_y_base + details_y_gap * 2, ancho
 # TIMES
 time_list = [ '00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
 n = 0
-time_list_y = 200
+time_list_y = 230
 for item in time_list:
     time_instance = Text(item, details_font_style , 15)
     time = time_instance.create()
@@ -183,12 +183,17 @@ five_days_fcast = management.load_weather_data('weather_5_days.json')
 # DELAY CALC
 five_days_fcast_first_datetime = five_days_fcast['list'][0]['dt']   # app triggered at 20:00->only the 21:00 data will be displayed
 todays_first_datetime = management.todays_first_datetime()
-delay = int((five_days_fcast_first_datetime - todays_first_datetime)/10800) 
+delay = int((five_days_fcast_first_datetime - todays_first_datetime)/10800)
 # DISPLAY
-x_counter = 1 + delay # only available data will be displayed at the correct time spot
-x_gap = 75
+if delay < 8:
+    x_counter = 1 + delay # only available data will be displayed at the correct time spot
+    y_counter = 0
+    
+else:               # after 21:00, the next day 00:00AM will be the first -> TODAY row will be empty
+    x_counter = 1
+    y_counter = 1
 
-y_counter = 0
+x_gap = 75    
 y_gap = 80
 five_day_icon_image = []            # to avoid garbage collection
 five_day_icon_image_widget = []     # to avoid garbage collection

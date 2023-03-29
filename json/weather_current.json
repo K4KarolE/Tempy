@@ -1,43 +1,43 @@
 {
   "coord": {
-    "lon": -0.0933,
-    "lat": 51.5248
+    "lon": 20.1946,
+    "lat": 47.1754
   },
   "weather": [
     {
-      "id": 804,
-      "main": "Clouds",
-      "description": "overcast clouds",
-      "icon": "04d"
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 13.96,
-    "feels_like": 13.45,
-    "temp_min": 12.58,
-    "temp_max": 15.21,
-    "pressure": 1005,
-    "humidity": 78
+    "temp": 3.66,
+    "feels_like": 1.74,
+    "temp_min": 3.29,
+    "temp_max": 6.14,
+    "pressure": 1022,
+    "humidity": 67
   },
   "visibility": 10000,
   "wind": {
-    "speed": 4.12,
-    "deg": 220
+    "speed": 2.06,
+    "deg": 170
   },
   "clouds": {
-    "all": 100
+    "all": 0
   },
-  "dt": 1680103979,
+  "dt": 1680126666,
   "sys": {
-    "type": 2,
-    "id": 2075535,
-    "country": "GB",
-    "sunrise": 1680068600,
-    "sunset": 1680114416
+    "type": 1,
+    "id": 6676,
+    "country": "HU",
+    "sunrise": 1680063906,
+    "sunset": 1680109374
   },
-  "timezone": 3600,
-  "id": 6690593,
-  "name": "Barbican",
+  "timezone": 7200,
+  "id": 714478,
+  "name": "Ugari Tany\u00e1k",
   "cod": 200
 }

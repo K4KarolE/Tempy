@@ -46,10 +46,9 @@ def find_city(city):
 ## GET WEATHER DATA
 def get_weather_data():
     settings_data = settings.open_settings()
-    city_selected= settings_data['city_selected']
     try: 
-        lat = settings_data['city_list'][city_selected]['lat']
-        lon = settings_data['city_list'][city_selected]['lon']
+        lat = settings_data['city_selected_coordinates']['lat']
+        lon = settings_data['city_selected_coordinates']['lon']
         temp_type_selected = settings_data['temp_type_selected']    # example: Celsius
         temp_type = settings_data['temp_type'][temp_type_selected]  # example: metric
 

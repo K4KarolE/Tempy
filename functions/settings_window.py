@@ -64,7 +64,7 @@ def launch(launched, window):
         window.geometry(f'{window_width}x{window_settings_length}')
     else:
         # SEARCH FIELD LENGTH
-        search_field_length = 22
+        search_field_length = 19
 
         # COLORS - FONT STYLE
         background_color = settings_data['background_color']
@@ -107,8 +107,8 @@ def launch(launched, window):
                     city_select_roll_down_clicked.set(city_select_list[0]) 
                     city_select_roll_down = OptionMenu( window, city_select_roll_down_clicked, *city_select_list, command=None)
                     city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
-                    city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')
-                    city_select_roll_down.place(x=25, y=y_location(4))
+                    city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = background_color, activebackground='white')
+                    city_select_roll_down.place(x=23+x_adjust, y=y_location(4))
                     city_select_button.configure(state='normal')
             else:
                 messages.error_pop_up('Error','empty_city_search_field')
@@ -121,10 +121,10 @@ def launch(launched, window):
         # ROLL DOWN MENU
         city_select_list=["None"]
         city_select_roll_down_clicked = StringVar()
-        city_select_roll_down_clicked.set("  Search for a city first  ")
+        city_select_roll_down_clicked.set("    Search for a city first  ")
         city_select_roll_down = OptionMenu(window, city_select_roll_down_clicked, *city_select_list, command=None)     
         city_select_roll_down.configure(font=(font_style, font_size), foreground=font_color, background=background_color, activeforeground = font_color, activebackground=background_color, highlightbackground=background_color)
-        city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground='grey')
+        city_select_roll_down['menu'].configure(font=(font_style, font_size), foreground=font_color, background=background_color, activebackground=font_color)
         city_select_roll_down.configure(state='disabled') 
 
         # BUTTON
@@ -134,6 +134,7 @@ def launch(launched, window):
             city_selected = city_select_roll_down_clicked.get()
             settings_data = settings.open_settings()
             settings_data['city_selected'] = city_selected
+            settings_data['city_selected_coordinates'] = settings_data['city_list'][city_selected]
             # settings_data['city_selected_name'] = city_selected.split(',')[0] - it is in weather_current.json
             settings.save_settings(settings_data)
             # GET WEATHER DATA
@@ -190,11 +191,9 @@ def launch(launched, window):
 
 
         ## DISPLAY WIDGETS
-        # FIELD
-        x_field = 17
-        y_field = 20
+        x_adjust = 5
         # BUTTON
-        x_button = 300
+        x_button = 500
         y_button_base = settings_data['window_settings_length']-150
 
         def y_location(gap):
@@ -202,21 +201,21 @@ def launch(launched, window):
             return location
 
         # CELSIUS BUTTON
-        celsius_button.place(x=25, y=y_location(0))
+        celsius_button.place(x=25+x_adjust, y=y_location(0))
 
         # FAHRENHEAIT BUTTON
-        fahrenheit_button.place(x=125, y=y_location(0))
+        fahrenheit_button.place(x=125+x_adjust, y=y_location(0))
 
         # SEARCH CITY - FIELD + BUTTON
-        city_search_field.place(x=25, y=y_location(1)+20)
-        city_search_button.place(x=x_button, y=y_location(1)+20)
+        city_search_field.place(x=25+x_adjust, y=y_location(1)+20)
+        city_search_button.place(x=x_button+x_adjust, y=y_location(1)+20)
 
         # SELECT CITY - FIELD + BUTTON
-        city_select_roll_down.place(x=25, y=y_location(4))
-        city_select_button.place(x=x_button, y=y_location(4))
+        city_select_roll_down.place(x=23+x_adjust, y=y_location(4))
+        city_select_button.place(x=x_button+x_adjust, y=y_location(4))
 
         # CLOSE BUTTON
-        close_button.place(x=window_width-45, y=y_location(-2)-10)
+        close_button.place(x=window_width-45+x_adjust, y=y_location(-2)-10)
 
         window.mainloop()
 

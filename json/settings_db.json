@@ -1,29 +1,20 @@
 {
   "city_list": {
-    "London, GB": {
-      "lat": 51.5073219,
-      "lon": -0.1276474
+    "Szolnok, HU": {
+      "lat": 47.1753833,
+      "lon": 20.1946279
     },
-    "City of London, GB": {
-      "lat": 51.5156177,
-      "lon": -0.0919983
-    },
-    "London, CA": {
-      "lat": 42.9832406,
-      "lon": -81.243372
-    },
-    "Chelsea, GB": {
-      "lat": 51.4875167,
-      "lon": -0.1687007
-    },
-    "London, US, Kentucky": {
-      "lat": 37.1289771,
-      "lon": -84.0832646
+    "Zarkovac, RS": {
+      "lat": 45.0032639,
+      "lon": 19.935358
     }
   },
   "city_search_valid": "True",
-  "city_selected": "City of London, GB",
-  "city_selected_name": "London",
+  "city_selected": "Szolnok, HU",
+  "city_selected_coordinates": {
+    "lat": 47.1753833,
+    "lon": 20.1946279
+  },
   "temp_type_selected": "Celsius",
   "temp_type": {
     "Fahrenheit": "imperial",
@@ -36,7 +27,7 @@
   "font_color": "white",
   "window_title": "Tempy",
   "window_width": 800,
-  "window_original_length": 750,
-  "window_settings_length": 950,
+  "window_original_length": 800,
+  "window_settings_length": 1000,
   "window_background_color": "#303030"
 }
