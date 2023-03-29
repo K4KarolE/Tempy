@@ -30,13 +30,13 @@ def launch(launched, window):
                             activebackground=font_color,
                             font=(font_style, font_size))
         # CELSIUS - FAHRENHEIT
-        def selected(self):
+        def standard(self):
             return self.configure(foreground=background_color,
                             background="#505050",
                             activeforeground=background_color,
                             activebackground=background_color)
         
-        def standard(self):
+        def selected(self):
             return self.configure(foreground=font_color,
                             background=background_color,
                             activeforeground=background_color,
@@ -51,9 +51,9 @@ def launch(launched, window):
             return Text(window,
                         height = 1,
                         width = self.width,
-                        foreground=font_color,
+                        foreground="#303030",
                         background=self.background,
-                        font=(font_style, "14"))    
+                        font=(font_style, "14", "bold"))    
 
     # CREATING THE SETTINGS WINDOW ONLY ONCE @ FIRST OPENING
     # RE-CLICKING THE SETTINGS BUTTON / REOPENING THE SETTINGS WINDOW:
@@ -216,7 +216,7 @@ def launch(launched, window):
         city_select_button.place(x=x_button, y=y_location(4))
 
         # CLOSE BUTTON
-        close_button.place(x=window_width-45, y=y_location(-1))
+        close_button.place(x=window_width-45, y=y_location(-2)-10)
 
         window.mainloop()
 

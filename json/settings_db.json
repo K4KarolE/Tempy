@@ -1,42 +1,42 @@
 {
   "city_list": {
-    "Putney, GB": {
-      "lat": 51.4625524,
-      "lon": -0.2167462
+    "London, GB": {
+      "lat": 51.5073219,
+      "lon": -0.1276474
     },
-    "Putney, US, Vermont": {
-      "lat": 42.9750374,
-      "lon": -72.5219215
+    "City of London, GB": {
+      "lat": 51.5156177,
+      "lon": -0.0919983
     },
-    "Putney, US, West Virginia": {
-      "lat": 38.2964913,
-      "lon": -81.3728933
+    "London, CA": {
+      "lat": 42.9832406,
+      "lon": -81.243372
     },
-    "Putney, AU": {
-      "lat": -33.826067,
-      "lon": 151.1064224
+    "Chelsea, GB": {
+      "lat": 51.4875167,
+      "lon": -0.1687007
     },
-    "Putney, US, Kentucky": {
-      "lat": 36.9053682,
-      "lon": -83.2262868
+    "London, US, Kentucky": {
+      "lat": 37.1289771,
+      "lon": -84.0832646
     }
   },
   "city_search_valid": "True",
-  "city_selected": "Putney, GB",
+  "city_selected": "City of London, GB",
   "city_selected_name": "London",
   "temp_type_selected": "Celsius",
   "temp_type": {
     "Fahrenheit": "imperial",
     "Celsius": "metric"
   },
-  "background_color": "#6DB6FF",
-  "field_background_color": "#6DB6FF",
-  "font_style": "Arial",
+  "background_color": "#303030",
+  "field_background_color": "#DEDEDE",
+  "font_style": "Candara",
   "font_size": "12",
-  "font_color": "black",
+  "font_color": "white",
   "window_title": "Tempy",
   "window_width": 800,
   "window_original_length": 750,
   "window_settings_length": 950,
-  "window_background_color": "#6DB6FF"
+  "window_background_color": "#303030"
 }

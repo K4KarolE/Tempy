@@ -9,6 +9,7 @@ from datetime import timedelta
 from functions import settings
 from functions import api
 from functions import weather_icons
+
 from functions import settings_window
 from functions import image_display
 from functions import management
@@ -23,15 +24,15 @@ class Text:
     def create(self):
         return Label(window,
                      text = self.text,
-                     font = (self.font_style, self.font_size),
+                     font = (self.font_style, self.font_size, 'bold'),
                      foreground=font_color,
                      background=background_color)
 
 
 # ## GET WEATHER DATA - BY STARTING THE APP AUTOMATICALLY GET THE LAST USED CITY`S NEW WEATHER DETAILS
-api.get_weather_data()
-# DOWNLOAD MISSING WEATHER ICONS
-weather_icons.download()
+# api.get_weather_data()
+# # DOWNLOAD MISSING WEATHER ICONS
+# weather_icons.download()
 # ACCESS TO SETTINGS_DB.JSON
 settings_data = settings.open_settings()   
 
@@ -85,7 +86,7 @@ settings_button = Button(window,
                       background=background_color, 
                       activeforeground=background_color, 
                       activebackground='#505050')
-settings_button.place(x=window_width - 50, y=20)
+settings_button.place(x=window_width - 50, y=110)
 
 
 
@@ -96,13 +97,13 @@ current_w_dic = management.load_weather_data("weather_current.json")
 
 # CITY NAME
 city_name_text = settings_data['city_selected']
-city_name_instance = Text(city_name_text,'Georgia', 18)
+city_name_instance = Text(city_name_text, font_style, 18)
 city_name = city_name_instance.create()
 city_name.place(x=window_width/2-10, y=40, anchor = CENTER)
 
 ## TEMP / HUM / WIND - FONT SIZE / STYLE
 details_font_size = 15
-details_font_style = 'Arial'
+details_font_style = font_style
 details_y_base = 70
 details_y_gap = 30
 
@@ -160,7 +161,7 @@ time_list = [ '00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21
 n = 0
 time_list_y = 200
 for item in time_list:
-    time_instance = Text(item, details_font_style , 12)
+    time_instance = Text(item, details_font_style , 15)
     time = time_instance.create()
     time.place(x=window_width/5 + n, y=time_list_y)
     n += 75
@@ -172,7 +173,7 @@ for i in range(1,6):
 
 n = 0
 for item in days_list:
-    days_instance = Text(item, details_font_style , 12)
+    days_instance = Text(item, details_font_style , 15)
     days = days_instance.create()
     days.place(x=30, y=time_list_y + 50 + n)
     n += 81
@@ -203,7 +204,7 @@ for item in five_days_fcast['list']:
     # able to add TEXT to list or dictionary, but apart from the last item they will be garbage collected
     # -> not able to remove them from the screen using the .destroy() function, only the last item will be terminated
     # -> not able to refresh the main page with the new city weather details, app has to be restarted to display
-    five_day_w_data_font_size = 9
+    five_day_w_data_font_size = 11
     five_day_w_data_widget_instance = []
     temp_five_day = round(item['main']['temp'])
     hum_five_day = item['main']['humidity']
