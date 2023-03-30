@@ -9,3 +9,7 @@
 <div align="center">
     <img src="docs/screenshot/main_with_settings.png"</img> 
 </div>
+<br>
+<div align="center">
+    <img src="docs/screenshot/settings.png"</img> 
+</div>

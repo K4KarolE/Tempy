@@ -1,19 +1,27 @@
 {
   "city_list": {
-    "Szolnok, HU": {
-      "lat": 47.1753833,
-      "lon": 20.1946279
+    "Bristol, GB": {
+      "lat": 51.4538022,
+      "lon": -2.5972985
     },
-    "Zarkovac, RS": {
-      "lat": 45.0032639,
-      "lon": 19.935358
+    "Bristol, US, Virginia": {
+      "lat": 36.5959685,
+      "lon": -82.1885009
+    },
+    "Bristol, US, Connecticut": {
+      "lat": 41.6735209,
+      "lon": -72.9464859
+    },
+    "Bristol, US, Tennessee": {
+      "lat": 36.5945034,
+      "lon": -82.1885212
     }
   },
   "city_search_valid": "True",
-  "city_selected": "Szolnok, HU",
+  "city_selected": "City of London, GB",
   "city_selected_coordinates": {
-    "lat": 47.1753833,
-    "lon": 20.1946279
+    "lat": 51.5156177,
+    "lon": -0.0919983
   },
   "temp_type_selected": "Celsius",
   "temp_type": {

@@ -148,10 +148,10 @@ sunrise.place(x=window_width/2+100, y=details_y_base + details_y_gap * 1, anchor
 sunset_timestamp = current_w_dic['sys']['sunset']
 sunset_dt = datetime.fromtimestamp(sunset_timestamp)
 sunset = str(sunset_dt).split(' ')[1][0:5]
-sunset_text = f'Sunset: {sunset}'
+sunset_text = f'Sunset:   {sunset}'
 sunset_instance = Text(sunset_text, details_font_style, details_font_size)
 sunset = sunset_instance.create()
-sunset.place(x=window_width/2+100+5, y=details_y_base + details_y_gap * 2, anchor = NW)
+sunset.place(x=window_width/2+100, y=details_y_base + details_y_gap * 2, anchor = NW)
 
 
 
