@@ -76,7 +76,7 @@ def window_launched_counter(): # CREATING THE SETTINGS WIDOW WIDGETS ONLY ONCE @
     global launched
     launched += 1
 
-photo_cog = image_display.button(24,"icon_cog_popup.ico")
+photo_cog = image_display.button(24,"icon_cog_popup.png")
 settings_button = Button(window,
                       command = lambda: [window_launched_counter(), settings_window.launch(launched, window)],
                       image = photo_cog, 

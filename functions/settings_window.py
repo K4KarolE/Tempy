@@ -187,7 +187,7 @@ def launch(launched, window):
         close_button = close_button_instance.create()
         photo_size = 20
         photo_close = image_display.button(photo_size,"icon_close.png")
-        close_button.configure(height=photo_size+2, width=photo_size+2, image=photo_close, activebackground='#505050')
+        close_button.configure(height=photo_size+2, width=photo_size+2, image=photo_close, background="#266569" ,activebackground='#505050')
 
 
         ## DISPLAY WIDGETS
@@ -215,7 +215,7 @@ def launch(launched, window):
         city_select_button.place(x=x_button+x_adjust, y=y_location(4))
 
         # CLOSE BUTTON
-        close_button.place(x=window_width-45+x_adjust, y=y_location(-2)-10)
+        close_button.place(x=window_width-45, y=y_location(-2)-10)
 
         window.mainloop()
 
