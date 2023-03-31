@@ -206,7 +206,7 @@ for item in five_days_fcast['list']:
     five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap - 5, y=time_list_y + 30 + y_counter * y_gap)
     
     # WEATHER DATA
-    # able to add TEXT to list or dictionary, but apart from the last item they will be garbage collected
+    # able to add TEXT objects to list or dictionary, but apart from the last item they will be garbage collected(?)
     # -> not able to remove them from the screen using the .destroy() function, only the last item will be terminated
     # -> not able to refresh the main page with the new city weather details, app has to be restarted to display
     five_day_w_data_font_size = 11

@@ -18,10 +18,10 @@
     }
   },
   "city_search_valid": "True",
-  "city_selected": "City of London, GB",
+  "city_selected": "Bristol, GB",
   "city_selected_coordinates": {
-    "lat": 51.5156177,
-    "lon": -0.0919983
+    "lat": 51.4538022,
+    "lon": -2.5972985
   },
   "temp_type_selected": "Celsius",
   "temp_type": {
