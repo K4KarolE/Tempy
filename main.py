@@ -79,9 +79,7 @@ def window_launched_counter(): # CREATING THE SETTINGS WIDOW WIDGETS ONLY ONCE @
 photo_cog = image_display.button(24,"icon_cog_popup.png")
 settings_button = Button(window,
                       command = lambda: [window_launched_counter(), settings_window.launch(launched, window)],
-                      image = photo_cog, 
-                      height = 30,
-                      width = 30,
+                      image = photo_cog,
                       foreground=font_color, 
                       background=background_color, 
                       activeforeground=background_color, 
@@ -92,6 +90,7 @@ settings_button.place(x=window_width - 50, y=110)
 
 ### DISPLAY DATA
 ## CURRENT WEATHER DATA
+current_weather_widget_list = []
 # LOAD WEATHER DATA
 current_w_dic = management.load_weather_data("weather_current.json")
 
@@ -100,6 +99,7 @@ city_name_text = settings_data['city_selected']
 city_name_instance = Text(city_name_text, font_style, 18)
 city_name = city_name_instance.create()
 city_name.place(x=window_width/2-10, y=90, anchor = CENTER)
+current_weather_widget_list.append(city_name)
 
 ## TEMP / HUM / WIND - FONT SIZE / STYLE
 details_font_size = 15
@@ -113,12 +113,14 @@ temp_text = f"{round(current_w_dic['main']['temp'])}\xb0{temp_type}"     # \xb0 
 temp_instance = Text(temp_text, details_font_style, details_font_size)
 temp = temp_instance.create()
 temp.place(x=window_width/2, y=details_y_base + details_y_gap * 0, anchor = NW)
+current_weather_widget_list.append(temp)
 
 # HUMIDITY
 hum_text = f"{current_w_dic['main']['humidity']} %"     # \xb0 = degree sign
 hum_instance = Text(hum_text, details_font_style, details_font_size)
 hum = hum_instance.create()
 hum.place(x=window_width/2, y=details_y_base + details_y_gap * 1, anchor = NW)
+current_weather_widget_list.append(hum)
 
 # WIND
 if temp_type == 'C':
@@ -129,12 +131,14 @@ wind_text = f"{round(current_w_dic['wind']['speed'])} {wind_type}"     # \xb0 = 
 wind_instance = Text(wind_text, details_font_style , details_font_size)
 wind = wind_instance.create()
 wind.place(x=window_width/2, y=details_y_base + details_y_gap * 2, anchor = NW)
+current_weather_widget_list.append(wind)
 
 # ICON
 icon_name = current_w_dic['weather'][0]['icon']
 icon_image = image_display.weather_icon(80, icon_name)
 icon_image_widget = Label(window, image=icon_image, background=window_background_color)
 icon_image_widget.place(x=window_width/2, y=125, anchor = NE)
+current_weather_widget_list.append(icon_image_widget)
 
 # SUNRISE
 sunrise_timestamp = current_w_dic['sys']['sunrise']
@@ -144,6 +148,7 @@ sunrise_text = f'Sunrise: {sunrise}'
 sunrise_instance = Text(sunrise_text, details_font_style, details_font_size)
 sunrise = sunrise_instance.create()
 sunrise.place(x=window_width/2+100, y=details_y_base + details_y_gap * 1, anchor = NW)
+current_weather_widget_list.append(sunrise)
 # SUNSET
 sunset_timestamp = current_w_dic['sys']['sunset']
 sunset_dt = datetime.fromtimestamp(sunset_timestamp)
@@ -152,6 +157,7 @@ sunset_text = f'Sunset:   {sunset}'
 sunset_instance = Text(sunset_text, details_font_style, details_font_size)
 sunset = sunset_instance.create()
 sunset.place(x=window_width/2+100, y=details_y_base + details_y_gap * 2, anchor = NW)
+current_weather_widget_list.append(sunset)
 
 
 
@@ -197,6 +203,7 @@ x_gap = 75
 y_gap = 80
 five_day_icon_image = []            # to avoid garbage collection
 five_day_icon_image_widget = []     # to avoid garbage collection
+five_day_w_data_widget = []
 n=0
 for item in five_days_fcast['list']:
     # WEATHER ICONS
@@ -206,23 +213,44 @@ for item in five_days_fcast['list']:
     five_day_icon_image_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap - 5, y=time_list_y + 30 + y_counter * y_gap)
     
     # WEATHER DATA
-    # able to add TEXT objects to list or dictionary, but apart from the last item they will be garbage collected(?)
-    # -> not able to remove them from the screen using the .destroy() function, only the last item will be terminated
-    # -> not able to refresh the main page with the new city weather details, app has to be restarted to display
     five_day_w_data_font_size = 11
     five_day_w_data_widget_instance = []
     temp_five_day = round(item['main']['temp'])
     hum_five_day = item['main']['humidity']
     five_day_w_data = f'{temp_five_day}\xb0 {hum_five_day}%'
-    five_day_w_data_widget = Text(five_day_w_data, details_font_style, five_day_w_data_font_size).create()
-    five_day_w_data_widget.configure(background=background_color)
-    five_day_w_data_widget.place(x= window_width/5 - x_gap + x_counter * x_gap + 25, y=time_list_y + 90 + y_counter * y_gap, anchor=CENTER)
+    five_day_w_data_widget.append(Text(five_day_w_data, details_font_style, five_day_w_data_font_size).create())
+    five_day_w_data_widget[n].place(x= window_width/5 - x_gap + x_counter * x_gap + 25, y=time_list_y + 90 + y_counter * y_gap, anchor=CENTER)
     
     n += 1
     if x_counter % 8 == 0:
         x_counter = 0
         y_counter += 1
     x_counter += 1
+
+# REMOVE PREVIOUS WIDGETS
+# def remove_previous_widgets():
+#     ## CURRENT WEATHER DATA
+#     for item in current_weather_widget_list:
+#         item.destroy()
+#     ## 5 DAY WEATHER DATA
+#     # ICONS
+#     for item in five_day_icon_image_widget:
+#         item.destroy()
+#     # TEXT
+#     for item in five_day_w_data_widget:
+#         item.destroy()
+
+# remove_button = Button(window,
+#                       command = lambda: [remove_previous_widgets()],
+#                       text="Remove",
+#                       height = 1,
+#                       width = 6,
+#                       foreground=font_color, 
+#                       background=background_color, 
+#                       activeforeground=background_color, 
+#                       activebackground='#505050')
+# remove_button.place(x=window_width - 70, y=150)
+
 
      
 window.mainloop()

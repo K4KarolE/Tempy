@@ -46,7 +46,7 @@ pip install -r requirements.txt
     - Display the `Settings window`
     - Change the units of measurement (Celsius-Kmph / Fahrenheit-Mph)
     - Add new location/city
-        - Restart is required for the new location’s weather information (more info: main.py/line 209)
+        - Restart is required for the new location’s weather information
 
 # Modules used, which are part of Python 3.11
 - datetime
