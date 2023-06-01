@@ -32,7 +32,7 @@ pip install -r requirements.txt
 
 ## Others
 ### OpenWeather API API key
-- Register and get API key at [OpenWeather API](https://openweathermap.org/)
+- Register and get an API key at [OpenWeather API](https://openweathermap.org/)
 - It is 100% FREE till 60 calls/minute - 1,000,000 calls/month
 - Save the `API key` in the `api_key.txt` file
 
