@@ -20,6 +20,9 @@
 ```
 pip install -r requirements.txt
 ```
+#### LINUX+
+`sudo apt-get install python3-pil.imagetk`
+
 ### Separately
 ### Python 3 - used: 3.11
 - https://www.python.org/
@@ -37,7 +40,7 @@ pip install -r requirements.txt
 - Save the `API key` in the `api_key.txt` file
 
 ### OS
-- `Windows` (tested on 10)
+- Tested on `Windows 10/11`, `Linux Mint 22`
 
 # Guide
 - Start the app

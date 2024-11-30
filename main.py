@@ -1,4 +1,5 @@
 
+import sys
 import os
 from tkinter import *
 from pathlib import Path
@@ -59,9 +60,10 @@ window.geometry(f'{window_width}x{window_length}+%d+%d' % (screen_width/2-275, s
 window.resizable(0,0)   # locks the main window
 window.configure(background=settings_data['background_color'])
 # WINDOW ICON
-working_directory = os.path.dirname(__file__)
-path_icon = Path(working_directory, "skin", "icon.ico") 
-window.iconbitmap(path_icon)
+if sys.platform != 'linux':
+    working_directory = os.path.dirname(__file__)
+    path_icon = Path(working_directory, "skin", "icon.ico") 
+    window.iconbitmap(path_icon)
 # BACKGROUND IMAGE 
 main_directory = os.path.dirname(__file__)
 path_image = Path(main_directory, "skin", "BG.png")
